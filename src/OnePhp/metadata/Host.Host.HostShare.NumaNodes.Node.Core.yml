@@ -1,0 +1,42 @@
+One\Host\Host\HostShare\NumaNodes\Node\Core:
+    properties:
+        cpus:
+            expose: true
+            access_type: public_method
+            serialized_name: CPUS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCpus
+                setter: setCpus
+            type: string
+        dedicated:
+            expose: true
+            access_type: public_method
+            serialized_name: DEDICATED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDedicated
+                setter: setDedicated
+            type: string
+        free:
+            expose: true
+            access_type: public_method
+            serialized_name: FREE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFree
+                setter: setFree
+            type: int
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: int

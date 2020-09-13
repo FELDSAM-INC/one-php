@@ -1,0 +1,32 @@
+One\UserPool\UserPool\Quotas\NetworkQuota\Network:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: string
+        leases:
+            expose: true
+            access_type: public_method
+            serialized_name: LEASES
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getLeases
+                setter: setLeases
+            type: string
+        leasesUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: LEASES_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getLeasesUsed
+                setter: setLeasesUsed
+            type: string

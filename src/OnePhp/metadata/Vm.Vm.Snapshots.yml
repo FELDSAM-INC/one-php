@@ -1,0 +1,56 @@
+One\Vm\Vm\Snapshots:
+    properties:
+        allowOrphans:
+            expose: true
+            access_type: public_method
+            serialized_name: ALLOW_ORPHANS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getAllowOrphans
+                setter: setAllowOrphans
+            type: string
+        currentBase:
+            expose: true
+            access_type: public_method
+            serialized_name: CURRENT_BASE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCurrentBase
+                setter: setCurrentBase
+            type: int
+        diskId:
+            expose: true
+            access_type: public_method
+            serialized_name: DISK_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDiskId
+                setter: setDiskId
+            type: int
+        nextSnapshot:
+            expose: true
+            access_type: public_method
+            serialized_name: NEXT_SNAPSHOT
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNextSnapshot
+                setter: setNextSnapshot
+            type: int
+        snapshot:
+            expose: true
+            access_type: public_method
+            serialized_name: SNAPSHOT
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSnapshot
+                setter: setSnapshot
+            xml_list:
+                inline: true
+                entry_name: SNAPSHOT
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Vm\Vm\Snapshots\Snapshot>

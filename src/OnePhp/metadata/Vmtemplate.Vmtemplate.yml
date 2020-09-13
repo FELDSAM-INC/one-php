@@ -1,0 +1,102 @@
+One\Vmtemplate\Vmtemplate:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: int
+        uid:
+            expose: true
+            access_type: public_method
+            serialized_name: UID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUid
+                setter: setUid
+            type: int
+        gid:
+            expose: true
+            access_type: public_method
+            serialized_name: GID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGid
+                setter: setGid
+            type: int
+        uname:
+            expose: true
+            access_type: public_method
+            serialized_name: UNAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUname
+                setter: setUname
+            type: string
+        gname:
+            expose: true
+            access_type: public_method
+            serialized_name: GNAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGname
+                setter: setGname
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: NAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        lock:
+            expose: true
+            access_type: public_method
+            serialized_name: LOCK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getLock
+                setter: setLock
+            type: One\Vmtemplate\Vmtemplate\Lock
+        permissions:
+            expose: true
+            access_type: public_method
+            serialized_name: PERMISSIONS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getPermissions
+                setter: setPermissions
+            type: One\Vmtemplate\Vmtemplate\Permissions
+        regtime:
+            expose: true
+            access_type: public_method
+            serialized_name: REGTIME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRegtime
+                setter: setRegtime
+            type: int
+        template:
+            expose: true
+            access_type: public_method
+            serialized_name: TEMPLATE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getTemplate
+                setter: setTemplate
+            type: One\Vmtemplate\Vmtemplate\Template

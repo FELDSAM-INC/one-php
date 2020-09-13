@@ -1,0 +1,22 @@
+One\Vdc\Vdc\Vnets\Vnet:
+    properties:
+        zoneId:
+            expose: true
+            access_type: public_method
+            serialized_name: ZONE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getZoneId
+                setter: setZoneId
+            type: int
+        vnetId:
+            expose: true
+            access_type: public_method
+            serialized_name: VNET_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVnetId
+                setter: setVnetId
+            type: int

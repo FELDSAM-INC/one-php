@@ -1,0 +1,12 @@
+One\Group\Group\VmQuota:
+    properties:
+        vm:
+            expose: true
+            access_type: public_method
+            serialized_name: VM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVm
+                setter: setVm
+            type: One\Group\Group\VmQuota\Vm

@@ -1,0 +1,207 @@
+One\Host\Host\HostShare:
+    properties:
+        diskUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: DISK_USAGE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDiskUsage
+                setter: setDiskUsage
+            type: int
+        memUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: MEM_USAGE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMemUsage
+                setter: setMemUsage
+            type: int
+        cpuUsage:
+            expose: true
+            access_type: public_method
+            serialized_name: CPU_USAGE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCpuUsage
+                setter: setCpuUsage
+            type: int
+        totalMem:
+            expose: true
+            access_type: public_method
+            serialized_name: TOTAL_MEM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getTotalMem
+                setter: setTotalMem
+            type: int
+        totalCpu:
+            expose: true
+            access_type: public_method
+            serialized_name: TOTAL_CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getTotalCpu
+                setter: setTotalCpu
+            type: int
+        maxDisk:
+            expose: true
+            access_type: public_method
+            serialized_name: MAX_DISK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMaxDisk
+                setter: setMaxDisk
+            type: int
+        maxMem:
+            expose: true
+            access_type: public_method
+            serialized_name: MAX_MEM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMaxMem
+                setter: setMaxMem
+            type: int
+        maxCpu:
+            expose: true
+            access_type: public_method
+            serialized_name: MAX_CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMaxCpu
+                setter: setMaxCpu
+            type: int
+        freeDisk:
+            expose: true
+            access_type: public_method
+            serialized_name: FREE_DISK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFreeDisk
+                setter: setFreeDisk
+            type: int
+        freeMem:
+            expose: true
+            access_type: public_method
+            serialized_name: FREE_MEM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFreeMem
+                setter: setFreeMem
+            type: int
+        freeCpu:
+            expose: true
+            access_type: public_method
+            serialized_name: FREE_CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFreeCpu
+                setter: setFreeCpu
+            type: int
+        usedDisk:
+            expose: true
+            access_type: public_method
+            serialized_name: USED_DISK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUsedDisk
+                setter: setUsedDisk
+            type: int
+        usedMem:
+            expose: true
+            access_type: public_method
+            serialized_name: USED_MEM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUsedMem
+                setter: setUsedMem
+            type: int
+        usedCpu:
+            expose: true
+            access_type: public_method
+            serialized_name: USED_CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUsedCpu
+                setter: setUsedCpu
+            type: int
+        runningVms:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_VMS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningVms
+                setter: setRunningVms
+            type: int
+        vmsThread:
+            expose: true
+            access_type: public_method
+            serialized_name: VMS_THREAD
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVmsThread
+                setter: setVmsThread
+            type: int
+        datastores:
+            expose: true
+            access_type: public_method
+            serialized_name: DATASTORES
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDatastores
+                setter: setDatastores
+            type: array<One\Host\Host\HostShare\Datastores\Ds>
+            xml_list:
+                inline: false
+                entry_name: DS
+                skip_when_empty: false
+                namespace: 'http://opennebula.org/XMLSchema'
+        pciDevices:
+            expose: true
+            access_type: public_method
+            serialized_name: PCI_DEVICES
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getPciDevices
+                setter: setPciDevices
+            type: array<OnePhp\AnyType>
+            xml_list:
+                inline: false
+                entry_name: PCI
+                skip_when_empty: false
+                namespace: 'http://opennebula.org/XMLSchema'
+        numaNodes:
+            expose: true
+            access_type: public_method
+            serialized_name: NUMA_NODES
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNumaNodes
+                setter: setNumaNodes
+            type: array<One\Host\Host\HostShare\NumaNodes\Node>
+            xml_list:
+                inline: false
+                entry_name: NODE
+                skip_when_empty: false
+                namespace: 'http://opennebula.org/XMLSchema'

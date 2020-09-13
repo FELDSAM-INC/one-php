@@ -1,0 +1,16 @@
+One\AclPool\AclPool:
+    properties:
+        acl:
+            expose: true
+            access_type: public_method
+            serialized_name: ACL
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getAcl
+                setter: setAcl
+            xml_list:
+                inline: true
+                entry_name: ACL
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\AclPool\AclPool\Acl>

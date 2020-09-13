@@ -1,0 +1,12 @@
+One\Vntemplate\Vntemplate\Template:
+    properties:
+        vnMad:
+            expose: true
+            access_type: public_method
+            serialized_name: VN_MAD
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVnMad
+                setter: setVnMad
+            type: string

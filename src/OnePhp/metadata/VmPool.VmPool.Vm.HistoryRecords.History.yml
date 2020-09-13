@@ -1,0 +1,72 @@
+One\VmPool\VmPool\Vm\HistoryRecords\History:
+    properties:
+        oid:
+            expose: true
+            access_type: public_method
+            serialized_name: OID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOid
+                setter: setOid
+            type: int
+        seq:
+            expose: true
+            access_type: public_method
+            serialized_name: SEQ
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSeq
+                setter: setSeq
+            type: int
+        hostname:
+            expose: true
+            access_type: public_method
+            serialized_name: HOSTNAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getHostname
+                setter: setHostname
+            type: string
+        hid:
+            expose: true
+            access_type: public_method
+            serialized_name: HID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getHid
+                setter: setHid
+            type: int
+        cid:
+            expose: true
+            access_type: public_method
+            serialized_name: CID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCid
+                setter: setCid
+            type: int
+        dsId:
+            expose: true
+            access_type: public_method
+            serialized_name: DS_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDsId
+                setter: setDsId
+            type: int
+        action:
+            expose: true
+            access_type: public_method
+            serialized_name: ACTION
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getAction
+                setter: setAction
+            type: int

@@ -1,0 +1,22 @@
+# config.yml
+# Linux Users: PHP Namespaces use back slash \ rather than a forward slash /
+# So for destinations_php, the namespace would be TestNs\MyApp
+
+xsd2php:
+  namespaces:
+    'http://opennebula.org/XMLSchema': 'One'
+  destinations_php:
+    'One': src/OnePhp/One
+
+  destinations_jms:
+    'One': src/OnePhp/metadata
+
+#  destinations_validation:
+#    'One': src/OnePhp/validation
+
+  aliases:
+     'http://www.w3.org/2001/XMLSchema':
+        anyType: 'OnePhp\AnyType'
+
+  naming_strategy: shortlower # optional and default
+  path_generator: psr4 # optional and default

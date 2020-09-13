@@ -1,0 +1,142 @@
+One\GroupPool\GroupPool\DefaultGroupQuotas\VmQuota\Vm:
+    properties:
+        cpu:
+            expose: true
+            access_type: public_method
+            serialized_name: CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCpu
+                setter: setCpu
+            type: string
+        cpuUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: CPU_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCpuUsed
+                setter: setCpuUsed
+            type: string
+        memory:
+            expose: true
+            access_type: public_method
+            serialized_name: MEMORY
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMemory
+                setter: setMemory
+            type: string
+        memoryUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: MEMORY_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMemoryUsed
+                setter: setMemoryUsed
+            type: string
+        runningCpu:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_CPU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningCpu
+                setter: setRunningCpu
+            type: string
+        runningCpuUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_CPU_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningCpuUsed
+                setter: setRunningCpuUsed
+            type: string
+        runningMemory:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_MEMORY
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningMemory
+                setter: setRunningMemory
+            type: string
+        runningMemoryUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_MEMORY_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningMemoryUsed
+                setter: setRunningMemoryUsed
+            type: string
+        runningVms:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_VMS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningVms
+                setter: setRunningVms
+            type: string
+        runningVmsUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: RUNNING_VMS_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRunningVmsUsed
+                setter: setRunningVmsUsed
+            type: string
+        systemDiskSize:
+            expose: true
+            access_type: public_method
+            serialized_name: SYSTEM_DISK_SIZE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSystemDiskSize
+                setter: setSystemDiskSize
+            type: string
+        systemDiskSizeUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: SYSTEM_DISK_SIZE_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSystemDiskSizeUsed
+                setter: setSystemDiskSizeUsed
+            type: string
+        vms:
+            expose: true
+            access_type: public_method
+            serialized_name: VMS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVms
+                setter: setVms
+            type: string
+        vmsUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: VMS_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVmsUsed
+                setter: setVmsUsed
+            type: string

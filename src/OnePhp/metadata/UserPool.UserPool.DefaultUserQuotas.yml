@@ -1,0 +1,57 @@
+One\UserPool\UserPool\DefaultUserQuotas:
+    properties:
+        datastoreQuota:
+            expose: true
+            access_type: public_method
+            serialized_name: DATASTORE_QUOTA
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDatastoreQuota
+                setter: setDatastoreQuota
+            type: array<One\UserPool\UserPool\DefaultUserQuotas\DatastoreQuota\Datastore>
+            xml_list:
+                inline: false
+                entry_name: DATASTORE
+                skip_when_empty: true
+                namespace: 'http://opennebula.org/XMLSchema'
+        networkQuota:
+            expose: true
+            access_type: public_method
+            serialized_name: NETWORK_QUOTA
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNetworkQuota
+                setter: setNetworkQuota
+            type: array<One\UserPool\UserPool\DefaultUserQuotas\NetworkQuota\Network>
+            xml_list:
+                inline: false
+                entry_name: NETWORK
+                skip_when_empty: true
+                namespace: 'http://opennebula.org/XMLSchema'
+        vmQuota:
+            expose: true
+            access_type: public_method
+            serialized_name: VM_QUOTA
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVmQuota
+                setter: setVmQuota
+            type: One\UserPool\UserPool\DefaultUserQuotas\VmQuota
+        imageQuota:
+            expose: true
+            access_type: public_method
+            serialized_name: IMAGE_QUOTA
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getImageQuota
+                setter: setImageQuota
+            type: array<One\UserPool\UserPool\DefaultUserQuotas\ImageQuota\Image>
+            xml_list:
+                inline: false
+                entry_name: IMAGE
+                skip_when_empty: true
+                namespace: 'http://opennebula.org/XMLSchema'

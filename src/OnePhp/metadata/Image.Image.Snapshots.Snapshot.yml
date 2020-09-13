@@ -1,0 +1,72 @@
+One\Image\Image\Snapshots\Snapshot:
+    properties:
+        children:
+            expose: true
+            access_type: public_method
+            serialized_name: CHILDREN
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getChildren
+                setter: setChildren
+            type: string
+        active:
+            expose: true
+            access_type: public_method
+            serialized_name: ACTIVE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getActive
+                setter: setActive
+            type: string
+        date:
+            expose: true
+            access_type: public_method
+            serialized_name: DATE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDate
+                setter: setDate
+            type: int
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: int
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: NAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        parent:
+            expose: true
+            access_type: public_method
+            serialized_name: PARENT
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getParent
+                setter: setParent
+            type: int
+        size:
+            expose: true
+            access_type: public_method
+            serialized_name: SIZE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSize
+                setter: setSize
+            type: int

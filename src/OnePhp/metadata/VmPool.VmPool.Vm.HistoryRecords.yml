@@ -1,0 +1,16 @@
+One\VmPool\VmPool\Vm\HistoryRecords:
+    properties:
+        history:
+            expose: true
+            access_type: public_method
+            serialized_name: HISTORY
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getHistory
+                setter: setHistory
+            xml_list:
+                inline: true
+                entry_name: HISTORY
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\VmPool\VmPool\Vm\HistoryRecords\History>

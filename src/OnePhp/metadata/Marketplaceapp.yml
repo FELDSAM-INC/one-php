@@ -1,0 +1,3 @@
+One\Marketplaceapp:
+    xml_root_name: MARKETPLACEAPP
+    xml_root_namespace: 'http://opennebula.org/XMLSchema'

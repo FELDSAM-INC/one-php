@@ -1,0 +1,16 @@
+One\Datastore\Datastore\Images:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            xml_list:
+                inline: true
+                entry_name: ID
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<int>

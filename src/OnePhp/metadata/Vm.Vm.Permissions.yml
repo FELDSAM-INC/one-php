@@ -1,0 +1,92 @@
+One\Vm\Vm\Permissions:
+    properties:
+        ownerU:
+            expose: true
+            access_type: public_method
+            serialized_name: OWNER_U
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOwnerU
+                setter: setOwnerU
+            type: int
+        ownerM:
+            expose: true
+            access_type: public_method
+            serialized_name: OWNER_M
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOwnerM
+                setter: setOwnerM
+            type: int
+        ownerA:
+            expose: true
+            access_type: public_method
+            serialized_name: OWNER_A
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOwnerA
+                setter: setOwnerA
+            type: int
+        groupU:
+            expose: true
+            access_type: public_method
+            serialized_name: GROUP_U
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGroupU
+                setter: setGroupU
+            type: int
+        groupM:
+            expose: true
+            access_type: public_method
+            serialized_name: GROUP_M
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGroupM
+                setter: setGroupM
+            type: int
+        groupA:
+            expose: true
+            access_type: public_method
+            serialized_name: GROUP_A
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGroupA
+                setter: setGroupA
+            type: int
+        otherU:
+            expose: true
+            access_type: public_method
+            serialized_name: OTHER_U
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOtherU
+                setter: setOtherU
+            type: int
+        otherM:
+            expose: true
+            access_type: public_method
+            serialized_name: OTHER_M
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOtherM
+                setter: setOtherM
+            type: int
+        otherA:
+            expose: true
+            access_type: public_method
+            serialized_name: OTHER_A
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOtherA
+                setter: setOtherA
+            type: int

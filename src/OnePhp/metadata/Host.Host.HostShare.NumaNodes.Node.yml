@@ -1,0 +1,50 @@
+One\Host\Host\HostShare\NumaNodes\Node:
+    properties:
+        core:
+            expose: true
+            access_type: public_method
+            serialized_name: CORE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getCore
+                setter: setCore
+            xml_list:
+                inline: true
+                entry_name: CORE
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Host\Host\HostShare\NumaNodes\Node\Core>
+        hugepage:
+            expose: true
+            access_type: public_method
+            serialized_name: HUGEPAGE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getHugepage
+                setter: setHugepage
+            xml_list:
+                inline: true
+                entry_name: HUGEPAGE
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Host\Host\HostShare\NumaNodes\Node\Hugepage>
+        memory:
+            expose: true
+            access_type: public_method
+            serialized_name: MEMORY
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMemory
+                setter: setMemory
+            type: One\Host\Host\HostShare\NumaNodes\Node\Memory
+        nodeId:
+            expose: true
+            access_type: public_method
+            serialized_name: NODE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNodeId
+                setter: setNodeId
+            type: int

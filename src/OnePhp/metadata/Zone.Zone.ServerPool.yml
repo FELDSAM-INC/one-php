@@ -1,0 +1,16 @@
+One\Zone\Zone\ServerPool:
+    properties:
+        server:
+            expose: true
+            access_type: public_method
+            serialized_name: SERVER
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getServer
+                setter: setServer
+            xml_list:
+                inline: true
+                entry_name: SERVER
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Zone\Zone\ServerPool\Server>

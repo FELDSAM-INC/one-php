@@ -1,0 +1,232 @@
+One\Marketplaceapp\Marketplaceapp:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: int
+        uid:
+            expose: true
+            access_type: public_method
+            serialized_name: UID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUid
+                setter: setUid
+            type: int
+        gid:
+            expose: true
+            access_type: public_method
+            serialized_name: GID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGid
+                setter: setGid
+            type: int
+        uname:
+            expose: true
+            access_type: public_method
+            serialized_name: UNAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUname
+                setter: setUname
+            type: string
+        gname:
+            expose: true
+            access_type: public_method
+            serialized_name: GNAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGname
+                setter: setGname
+            type: string
+        lock:
+            expose: true
+            access_type: public_method
+            serialized_name: LOCK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getLock
+                setter: setLock
+            type: One\Marketplaceapp\Marketplaceapp\Lock
+        regtime:
+            expose: true
+            access_type: public_method
+            serialized_name: REGTIME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getRegtime
+                setter: setRegtime
+            type: int
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: NAME
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        zoneId:
+            expose: true
+            access_type: public_method
+            serialized_name: ZONE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getZoneId
+                setter: setZoneId
+            type: string
+        originId:
+            expose: true
+            access_type: public_method
+            serialized_name: ORIGIN_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getOriginId
+                setter: setOriginId
+            type: string
+        source:
+            expose: true
+            access_type: public_method
+            serialized_name: SOURCE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSource
+                setter: setSource
+            type: string
+        md5:
+            expose: true
+            access_type: public_method
+            serialized_name: MD5
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMd5
+                setter: setMd5
+            type: string
+        size:
+            expose: true
+            access_type: public_method
+            serialized_name: SIZE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSize
+                setter: setSize
+            type: int
+        description:
+            expose: true
+            access_type: public_method
+            serialized_name: DESCRIPTION
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDescription
+                setter: setDescription
+            type: string
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: VERSION
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            type: string
+        format:
+            expose: true
+            access_type: public_method
+            serialized_name: FORMAT
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFormat
+                setter: setFormat
+            type: string
+        apptemplate64:
+            expose: true
+            access_type: public_method
+            serialized_name: APPTEMPLATE64
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getApptemplate64
+                setter: setApptemplate64
+            type: string
+        marketplaceId:
+            expose: true
+            access_type: public_method
+            serialized_name: MARKETPLACE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMarketplaceId
+                setter: setMarketplaceId
+            type: int
+        marketplace:
+            expose: true
+            access_type: public_method
+            serialized_name: MARKETPLACE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMarketplace
+                setter: setMarketplace
+            type: string
+        state:
+            expose: true
+            access_type: public_method
+            serialized_name: STATE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getState
+                setter: setState
+            type: int
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: TYPE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getType
+                setter: setType
+            type: int
+        permissions:
+            expose: true
+            access_type: public_method
+            serialized_name: PERMISSIONS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getPermissions
+                setter: setPermissions
+            type: One\Marketplaceapp\Marketplaceapp\Permissions
+        template:
+            expose: true
+            access_type: public_method
+            serialized_name: TEMPLATE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getTemplate
+                setter: setTemplate
+            type: OnePhp\AnyType

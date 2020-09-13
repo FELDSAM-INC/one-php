@@ -1,0 +1,16 @@
+One\VrouterPool\VrouterPool:
+    properties:
+        vrouter:
+            expose: true
+            access_type: public_method
+            serialized_name: VROUTER
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVrouter
+                setter: setVrouter
+            xml_list:
+                inline: true
+                entry_name: VROUTER
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Vrouter>

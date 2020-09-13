@@ -1,0 +1,16 @@
+One\GroupPool\GroupPool\DefaultGroupQuotas\NetworkQuota:
+    properties:
+        network:
+            expose: true
+            access_type: public_method
+            serialized_name: NETWORK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNetwork
+                setter: setNetwork
+            xml_list:
+                inline: true
+                entry_name: NETWORK
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\GroupPool\GroupPool\DefaultGroupQuotas\NetworkQuota\Network>

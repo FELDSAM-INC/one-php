@@ -1,0 +1,52 @@
+One\User\User\DatastoreQuota\Datastore:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: string
+        images:
+            expose: true
+            access_type: public_method
+            serialized_name: IMAGES
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getImages
+                setter: setImages
+            type: string
+        imagesUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: IMAGES_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getImagesUsed
+                setter: setImagesUsed
+            type: string
+        size:
+            expose: true
+            access_type: public_method
+            serialized_name: SIZE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSize
+                setter: setSize
+            type: string
+        sizeUsed:
+            expose: true
+            access_type: public_method
+            serialized_name: SIZE_USED
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSizeUsed
+                setter: setSizeUsed
+            type: string

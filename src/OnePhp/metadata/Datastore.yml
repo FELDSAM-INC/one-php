@@ -1,0 +1,3 @@
+One\Datastore:
+    xml_root_name: DATASTORE
+    xml_root_namespace: 'http://opennebula.org/XMLSchema'

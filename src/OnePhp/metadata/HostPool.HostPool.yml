@@ -1,0 +1,16 @@
+One\HostPool\HostPool:
+    properties:
+        host:
+            expose: true
+            access_type: public_method
+            serialized_name: HOST
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getHost
+                setter: setHost
+            xml_list:
+                inline: true
+                entry_name: HOST
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Host>

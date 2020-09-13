@@ -1,0 +1,132 @@
+One\Vnet\Vnet\Template:
+    properties:
+        contextForceIpv4:
+            expose: true
+            access_type: public_method
+            serialized_name: CONTEXT_FORCE_IPV4
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getContextForceIpv4
+                setter: setContextForceIpv4
+            type: string
+        dns:
+            expose: true
+            access_type: public_method
+            serialized_name: DNS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDns
+                setter: setDns
+            type: string
+        gateway:
+            expose: true
+            access_type: public_method
+            serialized_name: GATEWAY
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGateway
+                setter: setGateway
+            type: string
+        gateway6:
+            expose: true
+            access_type: public_method
+            serialized_name: GATEWAY6
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGateway6
+                setter: setGateway6
+            type: string
+        guestMtu:
+            expose: true
+            access_type: public_method
+            serialized_name: GUEST_MTU
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getGuestMtu
+                setter: setGuestMtu
+            type: int
+        networkAddress:
+            expose: true
+            access_type: public_method
+            serialized_name: NETWORK_ADDRESS
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNetworkAddress
+                setter: setNetworkAddress
+            type: string
+        networkMask:
+            expose: true
+            access_type: public_method
+            serialized_name: NETWORK_MASK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNetworkMask
+                setter: setNetworkMask
+            type: string
+        searchDomain:
+            expose: true
+            access_type: public_method
+            serialized_name: SEARCH_DOMAIN
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getSearchDomain
+                setter: setSearchDomain
+            type: string
+        vcenterFromWild:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_FROM_WILD
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterFromWild
+                setter: setVcenterFromWild
+            type: string
+        vcenterInstanceId:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_INSTANCE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterInstanceId
+                setter: setVcenterInstanceId
+            type: string
+        vcenterNetRef:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_NET_REF
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterNetRef
+                setter: setVcenterNetRef
+            type: string
+        vcenterPortgroupType:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_PORTGROUP_TYPE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterPortgroupType
+                setter: setVcenterPortgroupType
+            type: string
+        vcenterTemplateRef:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_TEMPLATE_REF
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterTemplateRef
+                setter: setVcenterTemplateRef
+            type: string

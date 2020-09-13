@@ -1,0 +1,16 @@
+One\Vnet\Vnet\ArPool:
+    properties:
+        ar:
+            expose: true
+            access_type: public_method
+            serialized_name: AR
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getAr
+                setter: setAr
+            xml_list:
+                inline: true
+                entry_name: AR
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Vnet\Vnet\ArPool\Ar>

@@ -1,0 +1,42 @@
+One\Host\Host\HostShare\Datastores\Ds:
+    properties:
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getId
+                setter: setId
+            type: int
+        freeMb:
+            expose: true
+            access_type: public_method
+            serialized_name: FREE_MB
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getFreeMb
+                setter: setFreeMb
+            type: int
+        totalMb:
+            expose: true
+            access_type: public_method
+            serialized_name: TOTAL_MB
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getTotalMb
+                setter: setTotalMb
+            type: int
+        usedMb:
+            expose: true
+            access_type: public_method
+            serialized_name: USED_MB
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getUsedMb
+                setter: setUsedMb
+            type: int

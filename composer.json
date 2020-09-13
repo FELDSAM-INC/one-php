@@ -1,0 +1,38 @@
+{
+    "name": "feldsam-inc/one-php",
+    "description": "OpenNebula XML-RPC API Bindings",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Kristian Feldsam",
+            "email" : "feldsam@feldhost.cz"
+        }
+    ],
+    "keywords": [
+        "opennebula",
+        "one",
+        "xml",
+        "php",
+        "serializer"
+    ],
+    "license": "Apache-2.0",
+    "require": {
+        "goetas-webservices/xsd2php-runtime":"^0.2",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "goetas-webservices/xsd2php": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/FELDSAM-INC/xsd2php.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OnePhp\\": "src/OnePhp/",
+            "One\\": "src/OnePhp/One/"
+        }
+    }
+}

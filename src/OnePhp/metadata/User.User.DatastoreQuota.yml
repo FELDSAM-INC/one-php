@@ -1,0 +1,16 @@
+One\User\User\DatastoreQuota:
+    properties:
+        datastore:
+            expose: true
+            access_type: public_method
+            serialized_name: DATASTORE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDatastore
+                setter: setDatastore
+            xml_list:
+                inline: true
+                entry_name: DATASTORE
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\User\User\DatastoreQuota\Datastore>

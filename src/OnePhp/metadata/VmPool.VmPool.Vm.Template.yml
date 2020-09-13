@@ -1,0 +1,30 @@
+One\VmPool\VmPool\Vm\Template:
+    properties:
+        disk:
+            expose: true
+            access_type: public_method
+            serialized_name: DISK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getDisk
+                setter: setDisk
+            xml_list:
+                inline: true
+                entry_name: DISK
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\VmPool\VmPool\Vm\Template\Disk>
+        nic:
+            expose: true
+            access_type: public_method
+            serialized_name: NIC
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNic
+                setter: setNic
+            xml_list:
+                inline: true
+                entry_name: NIC
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\VmPool\VmPool\Vm\Template\Nic>

@@ -1,0 +1,16 @@
+One\Host\Host\HostShare\NumaNodes:
+    properties:
+        node:
+            expose: true
+            access_type: public_method
+            serialized_name: NODE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getNode
+                setter: setNode
+            xml_list:
+                inline: true
+                entry_name: NODE
+                namespace: 'http://opennebula.org/XMLSchema'
+            type: array<One\Host\Host\HostShare\NumaNodes\Node>

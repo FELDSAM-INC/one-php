@@ -1,0 +1,3 @@
+One\Image:
+    xml_root_name: IMAGE
+    xml_root_namespace: 'http://opennebula.org/XMLSchema'

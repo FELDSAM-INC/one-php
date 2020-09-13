@@ -1,0 +1,32 @@
+One\Vmtemplate\Vmtemplate\Template:
+    properties:
+        vcenterCcrRef:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_CCR_REF
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterCcrRef
+                setter: setVcenterCcrRef
+            type: string
+        vcenterInstanceId:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_INSTANCE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterInstanceId
+                setter: setVcenterInstanceId
+            type: string
+        vcenterTemplateRef:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_TEMPLATE_REF
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterTemplateRef
+                setter: setVcenterTemplateRef
+            type: string

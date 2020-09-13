@@ -1,0 +1,92 @@
+One\Vnet\Vnet\ArPool\Ar\Leases\Lease:
+    properties:
+        ip:
+            expose: true
+            access_type: public_method
+            serialized_name: IP
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getIp
+                setter: setIp
+            type: string
+        ip6:
+            expose: true
+            access_type: public_method
+            serialized_name: IP6
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getIp6
+                setter: setIp6
+            type: string
+        ip6Global:
+            expose: true
+            access_type: public_method
+            serialized_name: IP6_GLOBAL
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getIp6Global
+                setter: setIp6Global
+            type: string
+        ip6Link:
+            expose: true
+            access_type: public_method
+            serialized_name: IP6_LINK
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getIp6Link
+                setter: setIp6Link
+            type: string
+        ip6Ula:
+            expose: true
+            access_type: public_method
+            serialized_name: IP6_ULA
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getIp6Ula
+                setter: setIp6Ula
+            type: string
+        mac:
+            expose: true
+            access_type: public_method
+            serialized_name: MAC
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getMac
+                setter: setMac
+            type: string
+        vm:
+            expose: true
+            access_type: public_method
+            serialized_name: VM
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVm
+                setter: setVm
+            type: int
+        vnet:
+            expose: true
+            access_type: public_method
+            serialized_name: VNET
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVnet
+                setter: setVnet
+            type: int
+        vrouter:
+            expose: true
+            access_type: public_method
+            serialized_name: VROUTER
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVrouter
+                setter: setVrouter
+            type: int

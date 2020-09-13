@@ -1,0 +1,42 @@
+One\Vm\Vm\Template\Nic:
+    properties:
+        bridgeType:
+            expose: true
+            access_type: public_method
+            serialized_name: BRIDGE_TYPE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getBridgeType
+                setter: setBridgeType
+            type: string
+        vcenterInstanceId:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_INSTANCE_ID
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterInstanceId
+                setter: setVcenterInstanceId
+            type: string
+        vcenterNetRef:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_NET_REF
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterNetRef
+                setter: setVcenterNetRef
+            type: string
+        vcenterPortgroupType:
+            expose: true
+            access_type: public_method
+            serialized_name: VCENTER_PORTGROUP_TYPE
+            xml_element:
+                namespace: 'http://opennebula.org/XMLSchema'
+            accessor:
+                getter: getVcenterPortgroupType
+                setter: setVcenterPortgroupType
+            type: string
