@@ -42,6 +42,8 @@ class AnyType {
 
     /**
      * Converts 'ModelName' to 'MODEL_NAME'.
+     * @param string $word
+     * @return string
      */
     private function snakeCaseUpper(string $word) : string
     {

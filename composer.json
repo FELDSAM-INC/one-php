@@ -17,8 +17,10 @@
     ],
     "license": "Apache-2.0",
     "require": {
+        "php": ">=7.1",
         "goetas-webservices/xsd2php-runtime":"^0.2",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "phpxmlrpc/phpxmlrpc": "4"
     },
     "require-dev": {
         "goetas-webservices/xsd2php": "dev-master"
