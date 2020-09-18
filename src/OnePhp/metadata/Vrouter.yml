@@ -1,3 +1,0 @@
-One\Vrouter:
-    xml_root_name: VROUTER
-    xml_root_namespace: 'http://opennebula.org/XMLSchema'

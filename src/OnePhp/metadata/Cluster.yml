@@ -1,3 +1,0 @@
-One\Cluster:
-    xml_root_name: CLUSTER
-    xml_root_namespace: 'http://opennebula.org/XMLSchema'

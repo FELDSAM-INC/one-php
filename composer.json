@@ -18,12 +18,13 @@
     "license": "Apache-2.0",
     "require": {
         "php": ">=7.1",
-        "goetas-webservices/xsd2php-runtime":"^0.2",
+        "ext-simplexml": "*",
         "ext-curl": "*",
-        "phpxmlrpc/phpxmlrpc": "4"
+        "ext-json": "*",
+        "phpxmlrpc/phpxmlrpc": "4",
+        "adbario/php-dot-notation": "^2.2"
     },
     "require-dev": {
-        "goetas-webservices/xsd2php": "dev-master"
     },
     "repositories": [
         {
@@ -33,8 +34,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "OnePhp\\": "src/OnePhp/",
-            "One\\": "src/OnePhp/One/"
+            "One\\": "src/"
         }
     }
 }

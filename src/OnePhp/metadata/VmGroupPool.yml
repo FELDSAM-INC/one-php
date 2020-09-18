@@ -1,3 +1,0 @@
-One\VmGroupPool:
-    xml_root_name: VM_GROUP_POOL
-    xml_root_namespace: 'http://opennebula.org/XMLSchema'
