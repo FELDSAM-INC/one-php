@@ -5,7 +5,9 @@ We generated public methods with docs from api.rst file.
 
 ## WIP Status
 
-Project is under development:
+Project is under development.
 
 Todo:
 - handle error responses
+- add examples
+- release stable version
