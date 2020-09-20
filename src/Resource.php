@@ -3,13 +3,13 @@
 namespace One;
 
 use Adbar\Dot;
+use ArrayIterator;
 
 /**
  * Class Resource
  * @package One
  *
  * @method mixed|Resource add($keys, $value = null)
- * @method mixed|Resource all()
  * @method mixed|Resource clear($keys = null)
  * @method mixed|Resource delete($keys)
  * @method mixed|Resource flatten($delimiter = '.', $items = null, $prepend = '')
@@ -31,7 +31,6 @@ use Adbar\Dot;
  * @method mixed|Resource offsetSet($key, $value)
  * @method mixed|Resource offsetUnset($key)
  * @method mixed|Resource count($key = null)
- * @method mixed|Resource getIterator()
  * @method mixed|Resource jsonSerialize()
  */
 class Resource
@@ -45,7 +44,8 @@ class Resource
      * Resource constructor.
      * @param  array  $data
      */
-    public function __construct(array $data) {
+    public function __construct(array $data)
+    {
         $this->dot = new Dot($data);
     }
 
@@ -54,7 +54,8 @@ class Resource
      * @param $args
      * @return mixed|Resource
      */
-    public function __call($name, $args) {
+    public function __call($name, $args)
+    {
         $result = call_user_func_array([$this->dot, $name], $args);
 
         if (is_array($result)) {
@@ -72,8 +73,9 @@ class Resource
      * @return Resource
      * @throws \Exception
      */
-    public function getIndexedBy(string $by, $key = null) {
-        $data = $this->dot->get($key, $default);
+    public function getIndexedBy(string $by, $key = null): Resource
+    {
+        $data = $this->dot->get($key);
 
         if (!is_array($data)) {
             throw new \Exception('Fetched data are not type of array!');
@@ -83,12 +85,39 @@ class Resource
 
         foreach ($data as $row) {
             if (!array_key_exists($by, $row)) {
-                throw new \Exception('Requested index %s doen\'t in fetched array!');
+                throw new \Exception('Requested index %s doesn\'t in fetched array!');
             }
 
             $result[$row[$by]] = $row;
         }
 
         return new Resource($result);
+    }
+
+    /**
+     * Return all the stored items
+     *
+     * @return Resource[]
+     */
+    public function all(): array
+    {
+        $data = $this->dot->all();
+
+        $result = [];
+        foreach ($data as $row) {
+            $result[] = new Resource($row);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get an iterator for the stored items
+     *
+     * @return ArrayIterator
+     */
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->all());
     }
 }
