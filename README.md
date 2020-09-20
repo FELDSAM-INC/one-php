@@ -4,8 +4,29 @@
 [![Total Downloads](https://poser.pugx.org/feldsam-inc/one-php/downloads)](https://packagist.org/packages/feldsam-inc/one-php)
 [![License](https://poser.pugx.org/feldsam-inc/one-php/license)](https://packagist.org/packages/feldsam-inc/one-php)
 
-It parses XML responses to array. You can traverse over it by using dot notation.
-We generated public methods with docs from api.rst file.
+This library provides you with XML-RPC client, which parses XML responses to an array.  
+You can traverse over it by using dot notation.  
+We generated all public methods from [api.rst](https://github.com/OpenNebula/docs/blob/master/source/integration/system_interfaces/api.rst) file.
+
+Check example method with doc block. For more, check [src/One.php](https://github.com/FELDSAM-INC/one-php/blob/master/src/One.php)
+
+```
+/**
+ * Retrieves information for all or part of the VMs in the pool.
+ *
+ * @param int $a Filter flag  -4: Resources belonging to the user's primary group  -3: Resources belonging to the user  -2: All resources  -1: Resources belonging to the user and any of his groups * &gt;= 0: UID User's Resources
+ * @param int $b When the next parameter is &gt;= -1 this is the Range start ID. Can be -1. For smaller values this is the offset used for pagination.
+ * @param int $c For values &gt;= -1 this is the Range end ID. Can be -1 to get until the last ID. For values &lt; -1 this is the page size used for pagination.
+ * @param int $d VM state to filter by.
+ * @param string $e Filter in KEY=VALUE format.
+ * @return \One\Resource
+ */
+public function vmpoolInfoextended(int $a, int $b, int $c, int $d, string $e) {
+    return $this->makeCall('one.vmpool.infoextended', $a, $b, $c, $d, $e);
+}
+```
+
+Your IDE will use this doc blocks, and you have handy documentation inside code. No need to look into official docs page.
 
 ## Examples
 
