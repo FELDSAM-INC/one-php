@@ -28,7 +28,8 @@
     },
     "autoload": {
         "psr-4": {
-            "One\\": "src/"
+            "One\\": "src/",
+            "Gregwar\\RST\\HTML\\Nodes\\": "src/Gregwar/RST/HTML/Nodes/"
         }
     }
 }
