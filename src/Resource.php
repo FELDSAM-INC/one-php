@@ -63,4 +63,32 @@ class Resource
 
         return $result;
     }
+
+    /**
+     * Get Resource indexed by given string
+     *
+     * @param  string  $by
+     * @param  null  $key
+     * @return Resource
+     * @throws \Exception
+     */
+    public function getIndexedBy(string $by, $key = null) {
+        $data = $this->dot->get($key, $default);
+
+        if (!is_array($data)) {
+            throw new \Exception('Fetched data are not type of array!');
+        }
+
+        $result = [];
+
+        foreach ($data as $row) {
+            if (!array_key_exists($by, $row)) {
+                throw new \Exception('Requested index %s doen\'t in fetched array!');
+            }
+
+            $result[$row[$by]] = $row;
+        }
+
+        return new Resource($result);
+    }
 }
