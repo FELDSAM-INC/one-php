@@ -121,7 +121,7 @@ foreach ($methods as $m => $d) {
      * $desc
      *
 $argsDoc
-     * @return Resource
+     * @return \One\Resource
      */
     public function $method {
         return \$this->makeCall('$m', $argsPass);

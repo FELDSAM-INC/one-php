@@ -44,7 +44,7 @@ class OneBase {
     }
 
     /**
-     * @return Resource
+     * @return \One\Resource
      */
     protected function makeCall() {
         $args = func_get_args();
