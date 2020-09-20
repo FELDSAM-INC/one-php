@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0abbfc37c15b89ee413f00b62399ea95",
+    "content-hash": "8765144dadac5c29489fb6da44e7ad0c",
     "packages": [
         {
             "name": "adbario/php-dot-notation",
@@ -57,16 +57,16 @@
         },
         {
             "name": "phpxmlrpc/phpxmlrpc",
-            "version": "4.0.0",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gggeek/phpxmlrpc.git",
-                "reference": "679eacd661962f353a809ab66e83a86233f28bcc"
+                "reference": "9b400d2c102f2a55839af8f73279274ebe148526"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/679eacd661962f353a809ab66e83a86233f28bcc",
-                "reference": "679eacd661962f353a809ab66e83a86233f28bcc",
+                "url": "https://api.github.com/repos/gggeek/phpxmlrpc/zipball/9b400d2c102f2a55839af8f73279274ebe148526",
+                "reference": "9b400d2c102f2a55839af8f73279274ebe148526",
                 "shasum": ""
             },
             "require": {
@@ -79,9 +79,9 @@
                 "ext-curl": "*",
                 "ext-mbstring": "*",
                 "indeyets/pake": "~1.99",
-                "phpdocumentor/phpdocumentor": "2.*",
-                "phpunit/phpunit": ">=4.0.0",
-                "phpunit/phpunit-selenium": "*"
+                "phpunit/phpunit": ">=4.0.0, <6.0.0",
+                "phpunit/phpunit-selenium": "*",
+                "sami/sami": "~3.1"
             },
             "suggest": {
                 "ext-curl": "Needed for HTTPS and HTTP 1.1 support, NTLM Auth etc...",
@@ -104,7 +104,7 @@
                 "webservices",
                 "xmlrpc"
             ],
-            "time": "2016-01-20T23:28:09+00:00"
+            "time": "2020-03-04T10:26:33+00:00"
         }
     ],
     "packages-dev": [
@@ -242,8 +242,7 @@
     "platform": {
         "php": ">=7.1",
         "ext-simplexml": "*",
-        "ext-curl": "*",
-        "ext-json": "*"
+        "ext-curl": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

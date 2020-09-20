@@ -20,7 +20,7 @@
         "php": ">=7.1",
         "ext-simplexml": "*",
         "ext-curl": "*",
-        "phpxmlrpc/phpxmlrpc": "4",
+        "phpxmlrpc/phpxmlrpc": "^4.4",
         "adbario/php-dot-notation": "^2.2"
     },
     "require-dev": {
