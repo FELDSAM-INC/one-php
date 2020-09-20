@@ -1,5 +1,9 @@
 # OpenNebula API Bindings for PHP
 
+[![Latest Stable Version](https://poser.pugx.org/feldsam-inc/one-php/v/stable)](https://packagist.org/packages/feldsam-inc/one-php)
+[![Total Downloads](https://poser.pugx.org/feldsam-inc/one-php/downloads)](https://packagist.org/packages/feldsam-inc/one-php)
+[![License](https://poser.pugx.org/feldsam-inc/one-php/license)](https://packagist.org/packages/feldsam-inc/one-php)
+
 It parses XML responses to array. You can traverse over it by using dot notation.
 We generated public methods with docs from api.rst file.
 
