@@ -114,7 +114,7 @@ class OneBase {
             if (!in_array($k, array_keys($ar))) {
                 $ar[$k] = $child;
             } else {
-                if ($ar[$k][0]) {
+                if (isset($ar[$k][0])) {
                     $ar[$k][] = $child;
                 } else {
                     $ar[$k] = array($ar[$k]);
