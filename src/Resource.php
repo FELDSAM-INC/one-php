@@ -120,4 +120,16 @@ class Resource
     {
         return new ArrayIterator($this->all());
     }
+
+    /**
+     * @param mixed $key
+     * @return array
+     */
+    public function toArray($key = null): array {
+        $data = $this->dot->get($key);
+
+        if (is_array($data)) return $data;
+
+        return [$data];
+    }
 }
