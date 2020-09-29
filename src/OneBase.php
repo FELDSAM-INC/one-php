@@ -70,7 +70,17 @@ class OneBase {
             ));
         }
 
-        return new Resource(self::simplexmlToArray(simplexml_load_string($body)));
+        // parse xml with proper error handling
+        libxml_use_internal_errors(true);
+
+        $xml = simplexml_load_string($body);
+
+        // response is not a XML, it can be some sort of ID
+        if (!$xml) {
+            return new Resource(['ID' => $body]);
+        }
+
+        return new Resource(self::simplexmlToArray($xml));
     }
 
     /**
