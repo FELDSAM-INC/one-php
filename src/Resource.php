@@ -104,8 +104,8 @@ class Resource
         $data = $this->dot->all();
 
         $result = [];
-        foreach ($data as $row) {
-            $result[] = new Resource($row);
+        foreach ($data as $k => $row) {
+            $result[$k] = new Resource($row);
         }
 
         return $result;
