@@ -121,10 +121,10 @@ class OneBase {
                 }
                 $child[$ak] = (string) $av;
             }
-            if (!in_array($k, array_keys($ar))) {
+            if (!array_key_exists($k, $ar)) {
                 $ar[$k] = $child;
             } else {
-                if (isset($ar[$k][0])) {
+                if (!is_string($ar[$k]) && isset($ar[$k][0])) {
                     $ar[$k][] = $child;
                 } else {
                     $ar[$k] = array($ar[$k]);
