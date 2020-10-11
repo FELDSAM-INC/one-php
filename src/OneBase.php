@@ -53,6 +53,15 @@ class OneBase {
 
         foreach ($args as $arg) {
             $type = gettype($arg);
+
+            if ($type === 'array') {
+                $xmlrpcTypes = self::$xmlrpcTypes;
+                array_walk($arg, function (&$value, $key) use ($xmlrpcTypes) {
+                    $type = gettype($value);
+                    $value = new Value($value, $xmlrpcTypes[$type]);
+                });
+            }
+
             $params[] = new Value($arg, self::$xmlrpcTypes[$type]);
         }
 
