@@ -113,7 +113,7 @@ class Acl
      * @return string A string containing a hex number
      * @throws \Exception
      */
-    protected static function parseUsers(string $users): string {
+    public static function parseUsers(string $users): string {
         return dechex(static::calculateIds($users));
     }
 
@@ -124,7 +124,7 @@ class Acl
      * @return string A string containing a hex number
      * @throws \Exception
      */
-    protected static function parseResources(string $resources): string {
+    public static function parseResources(string $resources): string {
         $ret = 0;
         $resources = explode('/', $resources);
 
@@ -153,7 +153,7 @@ class Acl
      * @return string A string containing a hex number
      * @throws \Exception
      */
-    protected static function parseRights(string $rights): string {
+    public static function parseRights(string $rights): string {
         $ret = 0;
         $rights = explode('+', $rights);
 
@@ -175,7 +175,7 @@ class Acl
      * @return string A string containing a hex number
      * @throws \Exception
      */
-    protected static function parseZone(string $zone): string {
+    public static function parseZone(string $zone): string {
         return dechex(static::calculateIds($zone));
     }
 
