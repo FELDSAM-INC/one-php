@@ -4,6 +4,36 @@ namespace One;
 
 class One extends OneBase {
     /**
+     * Generate and return VNC token only
+     *
+     * @param int $a The VM ID.
+     * @return \One\Resource
+     */
+    public function vmVnctokenonly(int $a) {
+        return $this->makeCall('one.vm.vnctokenonly', $a);
+    }
+
+    /**
+     * Generate and return VNC token including VM details
+     *
+     * @param int $a The VM ID.
+     * @return \One\Resource
+     */
+    public function vmVnc(int $a) {
+        return $this->makeCall('one.vm.vnc', $a);
+    }
+
+    /**
+     * Generate and return VNC token including VM details
+     *
+     * @param int $a The VM ID.
+     * @return \One\Resource
+     */
+    public function vmVnctoken(int $a) {
+        return $this->makeCall('one.vm.vnctoken', $a);
+    }
+
+    /**
      * Allocates a new template in OpenNebula.
      *
      * @param string $a A string containing the template contents. Syntax can be the usual attribute=value or XML.

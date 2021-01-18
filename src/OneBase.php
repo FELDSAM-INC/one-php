@@ -18,6 +18,11 @@ class OneBase {
     private $client;
 
     /**
+     * @var Client
+     */
+    private $clientVnctoken;
+
+    /**
      * @var string
      */
     private $authString;
@@ -32,9 +37,17 @@ class OneBase {
         "NULL" => "null",
     ];
 
-    public function __construct($url, $authString) {
+    /**
+     * OneBase constructor.
+     * @param $url
+     * @param $authString
+     * @param  false  $vnctoken enable support for vnctoken service
+     */
+    public function __construct($url, $authString, $vnctoken = false) {
         $this->client = new Client($url);
         $this->authString = $authString;
+
+        if ($vnctoken) $this->clientVnctoken = new Client($url.'/vnctoken');
     }
 
     public function __call($name, $args) {
@@ -65,7 +78,12 @@ class OneBase {
             $params[] = new Value($arg, self::$xmlrpcTypes[$type]);
         }
 
-        $response = $this->client->send(new Request($method, $params));
+        if(in_array($method, ['one.vm.vnctokenonly', 'one.vm.vnctoken', 'one.vm.vnc'])) {
+            $response = $this->clientVnctoken->send(new Request($method, $params));
+        } else {
+            $response = $this->client->send(new Request($method, $params));
+        }
+
         if(!$response->value()) {
             throw new \RuntimeException(sprintf(
                 'XML-RPC API Call ends with error "%s" and code "%s"',
