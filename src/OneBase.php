@@ -38,7 +38,7 @@ class OneBase {
     }
 
     public function __call($name, $args) {
-        $name = 'one.'.$this->snakeCaseToDot(array_shift($args));
+        $name = 'one.'.$this->snakeCaseToDot($name);
         array_unshift($args, $name);
         return call_user_func_array([$this, 'makeCall'], $args);
     }
@@ -66,6 +66,13 @@ class OneBase {
         }
 
         $response = $this->client->send(new Request($method, $params));
+        if(!$response->value()) {
+            throw new \RuntimeException(sprintf(
+                'XML-RPC API Call ends with error "%s" and code "%s"',
+                $response->faultString(),
+                $response->faultCode()
+            ));
+        }
 
         $success = (bool) $response->value()[0]->scalarval();
         $body = (string) $response->value()[1]->scalarval();
