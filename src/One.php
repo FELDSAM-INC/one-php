@@ -152,10 +152,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function templateLock(int $a, int $b) {
-        return $this->makeCall('one.template.lock', $a, $b);
+    public function templateLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.template.lock', $a, $b, $c);
     }
 
     /**
@@ -474,10 +475,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function vmLock(int $a, int $b) {
-        return $this->makeCall('one.vm.lock', $a, $b);
+    public function vmLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vm.lock', $a, $b, $c);
     }
 
     /**
@@ -516,6 +518,17 @@ class One extends OneBase {
      */
     public function vmpoolInfoextended(int $a, int $b, int $c, int $d, string $e) {
         return $this->makeCall('one.vmpool.infoextended', $a, $b, $c, $d, $e);
+    }
+
+    /**
+     * Retrieves information for a specific set of VMs.
+     *
+     * @param string $a VMs set. A comma separated list of VMs IDs to be retrieved
+     * @param bool $b Extended. If true the entire VM will be retrived (similar to one.vmpool.infoextended)
+     * @return \One\Resource
+     */
+    public function vmpoolInfoset(string $a, bool $b) {
+        return $this->makeCall('one.vmpool.infoset', $a, $b);
     }
 
     /**
@@ -1191,10 +1204,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function vmgroupLock(int $a, int $b) {
-        return $this->makeCall('one.vmgroup.lock', $a, $b);
+    public function vmgroupLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vmgroup.lock', $a, $b, $c);
     }
 
     /**
@@ -1496,10 +1510,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function imageLock(int $a, int $b) {
-        return $this->makeCall('one.image.lock', $a, $b);
+    public function imageLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.image.lock', $a, $b, $c);
     }
 
     /**
@@ -1721,10 +1736,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function marketappLock(int $a, int $b) {
-        return $this->makeCall('one.marketapp.lock', $a, $b);
+    public function marketappLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.marketapp.lock', $a, $b, $c);
     }
 
     /**
@@ -1866,10 +1882,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function vrouterLock(int $a, int $b) {
-        return $this->makeCall('one.vrouter.lock', $a, $b);
+    public function vrouterLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vrouter.lock', $a, $b, $c);
     }
 
     /**
@@ -2007,6 +2024,17 @@ class One extends OneBase {
      */
     public function userDelgroup(int $a, int $b) {
         return $this->makeCall('one.user.delgroup', $a, $b);
+    }
+
+    /**
+     * Enables or disables a user.
+     *
+     * @param int $a The User ID.
+     * @param bool $b True for enabling, false for disabling.
+     * @return \One\Resource
+     */
+    public function userEnable(int $a, bool $b) {
+        return $this->makeCall('one.user.enable', $a, $b);
     }
 
     /**
@@ -2548,10 +2576,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function documentLock(int $a, int $b) {
-        return $this->makeCall('one.document.lock', $a, $b);
+    public function documentLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.document.lock', $a, $b, $c);
     }
 
     /**
@@ -2698,10 +2727,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function vntemplateLock(int $a, int $b) {
-        return $this->makeCall('one.vntemplate.lock', $a, $b);
+    public function vntemplateLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vntemplate.lock', $a, $b, $c);
     }
 
     /**
@@ -2785,10 +2815,11 @@ class One extends OneBase {
      *
      * @param int $a The object ID.
      * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
      * @return \One\Resource
      */
-    public function hookLock(int $a, int $b) {
-        return $this->makeCall('one.hook.lock', $a, $b);
+    public function hookLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.hook.lock', $a, $b, $c);
     }
 
     /**

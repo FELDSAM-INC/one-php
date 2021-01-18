@@ -15,7 +15,7 @@ $parser = new Parser();
 $parser->getEnvironment()->getErrorManager()->abortOnError(false);
 
 // parse docs and get nodes we are interested in
-$nodes = $parser->parseFile('api.rst')->getNodes(function(Node  $node){
+$nodes = $parser->parseFile('https://raw.githubusercontent.com/OpenNebula/docs/master/source/development_guide/system_interfaces/api.rst')->getNodes(function(Node  $node){
     if ($node instanceof TitleNode) {
         $method = (string)$node->getValue();
         if (preg_match('/^one\.(.+)\.(.+)$/', $method, $m)) {
