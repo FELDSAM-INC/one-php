@@ -6,7 +6,7 @@
 
 This library provides you with XML-RPC client, which parses XML responses to an array.  
 You can traverse over it by using dot notation.  
-We generated all public methods from [api.rst](https://github.com/OpenNebula/docs/blob/master/source/integration/system_interfaces/api.rst) file.
+We generated all public methods from [api.rst](https://raw.githubusercontent.com/OpenNebula/docs/master/source/development_guide/system_interfaces/api.rst) file.
 
 Check example method with doc block. For more, check [src/One.php](https://github.com/FELDSAM-INC/one-php/blob/master/src/One.php)
 
