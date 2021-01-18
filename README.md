@@ -68,6 +68,21 @@ $vms = $response->getIndexedBy('ID', 'VM');
 $vm = $vms->get(2403);
 ```
 
+**Working with ACL rules**
+
+[Understanding ACL Rules](http://docs.opennebula.io/5.12/operation/users_groups_management/chmod.html#understanding-acl-rules)
+
+```
+// user readable acl rule
+$aclRule = '@131 DATASTORE/%100 USE #0';
+
+// parse rule to hex numbers
+list($user, $resource, $rights, $zone) = \One\Acl::parseRule($aclRule);
+
+// use hex in api call
+$client->aclAddrule($user, $resource, $rights, $zone);
+```
+
 ## Development
 
 To contribute bug patches or new features, you can use the github Pull Request model. It is assumed that code and documentation are contributed under the Apache License 2.0.
