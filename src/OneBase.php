@@ -27,6 +27,44 @@ class OneBase {
      */
     private $authString;
 
+    /**
+     * @var \string[][]
+     */
+    private static $errorCodes = [
+        256 => [
+            'Authentication',
+            'User could not be authenticated.'
+        ],
+        512 => [
+            'Authorization',
+            'User is not authorized to perform the requested action.'
+        ],
+        1024 => [
+            'NotFound',
+            'The requested resource does not exist.'
+        ],
+        2048 => [
+            'WrongState',
+            'Wrong state to perform action.'
+        ],
+        4096 => [
+            'WrongParameters',
+            'Wrong parameters, e.g. param should be -1 or -2, but -3 was received.'
+        ],
+        8192 => [
+            'InternalError',
+            'Internal error, e.g. the resource could not be loaded from the DB.'
+        ],
+        16384 => [
+            'CannotAllocated',
+            'The resource cannot be allocated.'
+        ],
+        32768 => [
+            'ResourceLocked',
+            'The resource is locked.'
+        ]
+    ];
+
     private static $xmlrpcTypes = [
         "boolean" => "boolean",
         "integer" => "int",
@@ -85,23 +123,15 @@ class OneBase {
         }
 
         if(!$response->value()) {
-            throw new \RuntimeException(sprintf(
-                'XML-RPC API Call ends with error "%s" and code "%s"',
-                $response->faultString(),
-                $response->faultCode()
-            ));
+            static::raiseException($response->faultCode(), $response->faultString());
         }
 
         $success = (bool) $response->value()[0]->scalarval();
         $body = (string) $response->value()[1]->scalarval();
-        $code = (string) $response->value()[2]->scalarval();
+        $code = (int) $response->value()[2]->scalarval();
 
         if($success !== true) {
-            throw new \RuntimeException(sprintf(
-                'XML-RPC API Call ends with error "%s" and code "%s"',
-                $body,
-                $code
-            ));
+            static::raiseException($code, $body);
         }
 
         // parse xml with proper error handling
@@ -141,7 +171,7 @@ class OneBase {
      * @return array
      * https://hotexamples.com/examples/-/-/simplexml_to_array/php-simplexml_to_array-function-examples.html
      */
-    public static function simplexmlToArray($xml)
+    public static function simplexmlToArray($xml): Array
     {
         $ar = array();
         foreach ($xml->children() as $k => $v) {
@@ -167,5 +197,34 @@ class OneBase {
             }
         }
         return $ar;
+    }
+
+    /**
+     * @param  int  $code
+     * @param  string  $error
+     * @throws \RuntimeException
+     * @throws Exception\Authentication
+     * @throws Exception\Authorization
+     * @throws Exception\NotFound
+     * @throws Exception\WrongState
+     * @throws Exception\WrongParameters
+     * @throws Exception\InternalError
+     * @throws Exception\CannotAllocated
+     * @throws Exception\ResourceLocked
+     */
+    private static function raiseException(int $code, string $error): void {
+        if(!array_key_exists($code, static::$errorCodes)) {
+            throw new \RuntimeException(sprintf(
+                'XML-RPC API Call ends with error "%s" and code "%s"',
+                $error,
+                $code
+            ));
+        }
+
+        $error = static::$errorCodes[$code];
+
+        $exception = "One\\Exception\\".$error[0];
+
+        throw new $exception($error[1]);
     }
 }
