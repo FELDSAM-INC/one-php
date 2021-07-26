@@ -483,6 +483,40 @@ class One extends OneBase {
     }
 
     /**
+     * Add scheduled action to VM
+     *
+     * @param int $a The object ID.
+     * @param string $b Template containing the new scheduled action.
+     * @return \One\Resource
+     */
+    public function vmSchedadd(int $a, string $b) {
+        return $this->makeCall('one.vm.schedadd', $a, $b);
+    }
+
+    /**
+     * Update scheduled VM action
+     *
+     * @param int $a The object ID.
+     * @param int $b The ID of the scheduled action.
+     * @param string $c Template containing the updated scheduled action.
+     * @return \One\Resource
+     */
+    public function vmSchedupdate(int $a, int $b, string $c) {
+        return $this->makeCall('one.vm.schedupdate', $a, $b, $c);
+    }
+
+    /**
+     * Delete scheduled action from VM
+     *
+     * @param int $a The object ID.
+     * @param int $b The ID of the scheduled action.
+     * @return \One\Resource
+     */
+    public function vmScheddelete(int $a, int $b) {
+        return $this->makeCall('one.vm.scheddelete', $a, $b);
+    }
+
+    /**
      * Retrieves information for all or part of the VMs in the pool.
      *
      * @param int $a Filter flag  -4: Resources belonging to the user's primary group  -3: Resources belonging to the user  -2: All resources  -1: Resources belonging to the user and any of his groups * &gt;= 0: UID User's Resources
@@ -1604,6 +1638,17 @@ class One extends OneBase {
     }
 
     /**
+     * Enable/disable the Marketplace.
+     *
+     * @param int $a The Marketplace ID.
+     * @param bool $b True for enabling, false for disabling.
+     * @return \One\Resource
+     */
+    public function marketEnable(int $a, bool $b) {
+        return $this->makeCall('one.market.enable', $a, $b);
+    }
+
+    /**
      * Retrieves information for the marketplace.
      *
      * @param int $a The object ID.
@@ -2375,6 +2420,17 @@ class One extends OneBase {
      */
     public function zoneDelete(int $a) {
         return $this->makeCall('one.zone.delete', $a);
+    }
+
+    /**
+     * Enable/disable the given zone.
+     *
+     * @param int $a The Zone ID.
+     * @param bool $b True for enabling, false for disabling.
+     * @return \One\Resource
+     */
+    public function zoneEnable(int $a, bool $b) {
+        return $this->makeCall('one.zone.enable', $a, $b);
     }
 
     /**

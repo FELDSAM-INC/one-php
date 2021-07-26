@@ -190,6 +190,12 @@ onevm
 +----------------------+---------------------------+-------------------+
 | unlock               | one.vm.unlock             | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
+| create-chart         | one.vm.schedadd           | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
+| update-chart         | one.vm.schedupdate        | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
+| delete-chart         | one.vm.scheddelete        | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
 
 
 
@@ -630,6 +636,10 @@ onemarket
 +--------------------+---------------------+------------------------------+
 | rename             | one.market.rename   | MARKETPLACE:MANAGE           |
 +--------------------+---------------------+------------------------------+
+| enable             | one.market.enable   | MARKETPLACE:MANAGE           |
+|                    |                     |                              |
+| disable            |                     |                              |
++--------------------+---------------------+------------------------------+
 | list               | one.marketpool.info | MARKETPLACE:USE              |
 +--------------------+---------------------+------------------------------+
 
@@ -739,6 +749,10 @@ onezone
 | update          | one.zone.update   | ZONE:MANAGE   |
 +-----------------+-------------------+---------------+
 | delete          | one.zone.delete   | ZONE:ADMIN    |
++-----------------+-------------------+---------------+
+| enable          | one.zone.enable   | ZONE:ADMIN    |
+|                 |                   |               |
+| disable         |                   |               |
 +-----------------+-------------------+---------------+
 | show            | one.zone.info     | ZONE:USE      |
 +-----------------+-------------------+---------------+
@@ -1918,13 +1932,13 @@ one.vm.updateconf
 | OUT  | Int        | ID of the Virtual Machine that caused the error.                                                 |
 +------+------------+--------------------------------------------------------------------------------------------------+
 
-
 The supported attributes are:
 
 +--------------+-------------------------------------------------------------------------+
 |  Attribute   |                              Sub-attributes                             |
 +==============+=========================================================================+
-| ``OS``       | ``ARCH``, ``MACHINE``, ``KERNEL``, ``INITRD``, ``BOOTLOADER``, ``BOOT`` |
+| ``OS``       | ``ARCH``, ``MACHINE``, ``KERNEL``, ``INITRD``, ``BOOTLOADER``, ``BOOT``,|
+|              | ``SD_DISK_BUS``, ``UUID``                                               |
 +--------------+-------------------------------------------------------------------------+
 | ``FEATURES`` | ``ACPI``, ``PAE``, ``APIC``, ``LOCALTIME``, ``HYPERV``, ``GUEST_AGENT`` |
 +--------------+-------------------------------------------------------------------------+
@@ -2083,6 +2097,80 @@ one.vm.unlock
 | OUT  | Int       | ID of the object that caused the error.                                                                |
 +------+-----------+--------------------------------------------------------------------------------------------------------+
 
+one.vm.schedadd
+--------------------------------------------------------------------------------
+
+-  **Description**: Add scheduled action to VM
+-  **Parameters**
+
++------+------------+----------------------------------------------------------------------+
+| Type | Data Type  |                                 Description                          |
++======+============+======================================================================+
+| IN   | String     | The session string.                                                  |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                       |
++------+------------+----------------------------------------------------------------------+
+| IN   | String     | Template containing the new scheduled action.                        |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                        |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine object that caused the error               |
++------+------------+----------------------------------------------------------------------+
+
+one.vm.schedupdate
+--------------------------------------------------------------------------------
+
+-  **Description**: Update scheduled VM action
+-  **Parameters**
+
++------+------------+----------------------------------------------------------------------+
+| Type | Data Type  |                                 Description                          |
++======+============+======================================================================+
+| IN   | String     | The session string.                                                  |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                       |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The ID of the scheduled action.                                      |
++------+------------+----------------------------------------------------------------------+
+| IN   | String     | Template containing the updated scheduled action.                    |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                        |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine object that caused the error               |
++------+------------+----------------------------------------------------------------------+
+
+one.vm.scheddelete
+--------------------------------------------------------------------------------
+
+-  **Description**: Delete scheduled action from VM
+-  **Parameters**
+
++------+------------+----------------------------------------------------------------------+
+| Type | Data Type  |                                 Description                          |
++======+============+======================================================================+
+| IN   | String     | The session string.                                                  |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                       |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The ID of the scheduled action.                                      |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                        |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine object that caused the error               |
++------+------------+----------------------------------------------------------------------+
+
 one.vmpool.info
 --------------------------------------------------------------------------------
 
@@ -2197,33 +2285,6 @@ one.vmpool.infoextended
 | OUT  | Int       | ID of the object that caused the error.                               |
 +------+-----------+-----------------------------------------------------------------------+
 
-one.vmpool.infoset
---------------------------------------------------------------------------------
-
--  **Description**: Retrieves information for a specific set of VMs.
--  **Parameters**
-
-+------+-----------+-----------------------------------------------------------------------+
-| Type | Data Type |                              Description                              |
-+======+===========+=======================================================================+
-| IN   | String    | The session string.                                                   |
-+------+-----------+-----------------------------------------------------------------------+
-| IN   | String    | VMs set. A comma separated list of VMs IDs to be retrieved            |
-+------+-----------+-----------------------------------------------------------------------+
-| IN   | Bool      | Extended. If true the entire VM will be retrived (similar to          |
-|      |           | one.vmpool.infoextended)                                              |
-+------+-----------+-----------------------------------------------------------------------+
-| OUT  | Boolean   | true or false whenever is successful or not                           |
-+------+-----------+-----------------------------------------------------------------------+
-| OUT  | String    | Version of the VM Pool containing the set of VMs.                     |
-+------+-----------+-----------------------------------------------------------------------+
-| OUT  | Int       | Error code.                                                           |
-+------+-----------+-----------------------------------------------------------------------+
-| OUT  | Int       | ID of the object that caused the error.                               |
-+------+-----------+-----------------------------------------------------------------------+
-
-The range can be used to retrieve a subset of the pool, from the 'start' to the 'end' ID. To retrieve the complete pool, use ``(-1, -1)``; to retrieve all the pool from a specific ID to the last one, use ``(<id>, -1)``, and to retrieve the first elements up to an ID, use ``(0, <id>)``.
-
 The state filter can be one of the following:
 
 +-------+---------------------------+
@@ -2259,6 +2320,33 @@ The state filter can be one of the following:
 .. warning::
 
   Value 7 is reserved for FAILED VMs for compatibility reasons.
+
+one.vmpool.infoset
+--------------------------------------------------------------------------------
+
+-  **Description**: Retrieves information for a specific set of VMs.
+-  **Parameters**
+
++------+-----------+-----------------------------------------------------------------------+
+| Type | Data Type |                              Description                              |
++======+===========+=======================================================================+
+| IN   | String    | The session string.                                                   |
++------+-----------+-----------------------------------------------------------------------+
+| IN   | String    | VMs set. A comma separated list of VMs IDs to be retrieved            |
++------+-----------+-----------------------------------------------------------------------+
+| IN   | Bool      | Extended. If true the entire VM will be retrived (similar to          |
+|      |           | one.vmpool.infoextended)                                              |
++------+-----------+-----------------------------------------------------------------------+
+| OUT  | Boolean   | true or false whenever is successful or not                           |
++------+-----------+-----------------------------------------------------------------------+
+| OUT  | String    | Version of the VM Pool containing the set of VMs.                     |
++------+-----------+-----------------------------------------------------------------------+
+| OUT  | Int       | Error code.                                                           |
++------+-----------+-----------------------------------------------------------------------+
+| OUT  | Int       | ID of the object that caused the error.                               |
++------+-----------+-----------------------------------------------------------------------+
+
+The range can be used to retrieve a subset of the pool, from the 'start' to the 'end' ID. To retrieve the complete pool, use ``(-1, -1)``; to retrieve all the pool from a specific ID to the last one, use ``(<id>, -1)``, and to retrieve the first elements up to an ID, use ``(0, <id>)``.
 
 one.vmpool.monitoring
 --------------------------------------------------------------------------------
@@ -2630,6 +2718,8 @@ For example:
             ...
         </HOST>
     </MONITORING_DATA>
+
+.. _api_hostpool_info:
 
 one.hostpool.info
 --------------------------------------------------------------------------------
@@ -4883,6 +4973,31 @@ one.market.rename
 | OUT  | Int        | ID of the object that caused the error.     |
 +------+------------+---------------------------------------------+
 
+
+one.market.enable
+-----------------
+
+-  **Description**: Enable/disable the Marketplace.
+-  **Parameters**
+
++------+------------+---------------------------------------------+
+| Type | Data Type  |                 Description                 |
++======+============+=============================================+
+| IN   | String     | The session string.                         |
++------+------------+---------------------------------------------+
+| IN   | Int        | The Marketplace ID.                         |
++------+------------+---------------------------------------------+
+| IN   | Boolean    | True for enabling, false for disabling.     |
++------+------------+---------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not |
++------+------------+---------------------------------------------+
+| OUT  | Int/String | The resource ID / The error string.         |
++------+------------+---------------------------------------------+
+| OUT  | Int        | Error code.                                 |
++------+------------+---------------------------------------------+
+| OUT  | Int        | ID of the object that caused the error.     |
++------+------------+---------------------------------------------+
+
 one.market.info
 --------------------------------------------------------------------------------
 
@@ -5231,7 +5346,6 @@ one.marketapppool.info
 +------+-----------+-----------------------------------------------------------------------+
 
 The range can be used to retrieve a subset of the pool, from the 'start' to the 'end' ID. To retrieve the complete pool, use ``(-1, -1)``; to retrieve all the pool from a specific ID to the last one, use ``(<id>, -1)``, and to retrieve the first elements up to an ID, use ``(0, <id>)``.
-
 
 Actions for Virtual Routers Management
 ================================================================================
@@ -6582,6 +6696,30 @@ one.zone.delete
 | IN   | String     | The session string.                         |
 +------+------------+---------------------------------------------+
 | IN   | Int        | The object ID.                              |
++------+------------+---------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not |
++------+------------+---------------------------------------------+
+| OUT  | Int/String | The resource ID / The error string.         |
++------+------------+---------------------------------------------+
+| OUT  | Int        | Error code.                                 |
++------+------------+---------------------------------------------+
+| OUT  | Int        | ID of the object that caused the error.     |
++------+------------+---------------------------------------------+
+
+one.zone.enable
+----------------
+
+-  **Description**: Enable/disable the given zone.
+-  **Parameters**
+
++------+------------+---------------------------------------------+
+| Type | Data Type  |                 Description                 |
++======+============+=============================================+
+| IN   | String     | The session string.                         |
++------+------------+---------------------------------------------+
+| IN   | Int        | The Zone ID.                                |
++------+------------+---------------------------------------------+
+| IN   | Boolean    | True for enabling, false for disabling.     |
 +------+------------+---------------------------------------------+
 | OUT  | Boolean    | true or false whenever is successful or not |
 +------+------------+---------------------------------------------+
