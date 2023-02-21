@@ -11,7 +11,7 @@ ini_set('display_errors', 'On');
 
 require __DIR__ . '/vendor/autoload.php';
 
-$parser = new Parser();
+$parser = new Parser(null, new \One\Gregwar\RST\HTML\Kernel());
 $parser->getEnvironment()->getErrorManager()->abortOnError(false);
 
 // parse docs and get nodes we are interested in
