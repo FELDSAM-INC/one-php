@@ -201,7 +201,7 @@ class OneBase {
 
     /**
      * @param  int  $code
-     * @param  string  $error
+     * @param  string  $errorMsg
      * @throws \RuntimeException
      * @throws Exception\Authentication
      * @throws Exception\Authorization
@@ -212,11 +212,11 @@ class OneBase {
      * @throws Exception\CannotAllocated
      * @throws Exception\ResourceLocked
      */
-    private static function raiseException(int $code, string $error): void {
+    private static function raiseException(int $code, string $errorMsg): void {
         if(!array_key_exists($code, static::$errorCodes)) {
             throw new \RuntimeException(sprintf(
                 'XML-RPC API Call ends with error "%s" and code "%s"',
-                $error,
+                $errorMsg,
                 $code
             ));
         }
@@ -225,6 +225,6 @@ class OneBase {
 
         $exception = "One\\Exception\\".$error[0];
 
-        throw new $exception($error[1]);
+        throw new $exception($error[1].' '.$errorMsg);
     }
 }
