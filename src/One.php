@@ -57,7 +57,7 @@ class One extends OneBase {
     }
 
     /**
-     * Replaces the template contents.
+     * Instantiates a new virtual machine from a template.
      *
      * @param int $a The object ID.
      * @param string $b Name for the new VM instance. If it is an empty string, OpenNebula will assign one automatically.
@@ -68,6 +68,18 @@ class One extends OneBase {
      */
     public function templateInstantiate(int $a, string $b, bool $c, string $d, bool $e) {
         return $this->makeCall('one.template.instantiate', $a, $b, $c, $d, $e);
+    }
+
+    /**
+     * Replaces the template contents.
+     *
+     * @param int $a The object ID.
+     * @param string $b The new template contents. Syntax can be the usual attribute=value or XML.
+     * @param int $c Update type: 0: replace the whole template. 1: Merge new template with the existing one.
+     * @return \One\Resource
+     */
+    public function templateUpdate(int $a, string $b, int $c) {
+        return $this->makeCall('one.template.update', $a, $b, $c);
     }
 
     /**
@@ -330,6 +342,42 @@ class One extends OneBase {
     }
 
     /**
+     * Updates (appends) a NIC attributes
+     *
+     * @param int $a The object ID.
+     * @param int $b The nic ID.
+     * @param string $c A string containing updated attributes for the NIC.
+     * @param int $d Update type: 0: Replace the whole NIC. 1: Merge new NIC with the existing one.
+     * @return \One\Resource
+     */
+    public function vmUpdatenic(int $a, int $b, string $c, int $d) {
+        return $this->makeCall('one.vm.updatenic', $a, $b, $c, $d);
+    }
+
+    /**
+     * Attaches a security group to a network interface of a VM, if the VM is running it updates the associated rules.
+     *
+     * @param int $a The Virtual Machine ID.
+     * @param int $b The NIC ID
+     * @param int $c The Security Group ID, which should be added to the NIC
+     * @return \One\Resource
+     */
+    public function vmAttachsg(int $a, int $b, int $c) {
+        return $this->makeCall('one.vm.attachsg', $a, $b, $c);
+    }
+
+    /**
+     * Detaches a security group from a network interface of a VM, if the VM is running it removes the associated rules.
+     *
+     * @param int $a The object ID.
+     * @param int $b The NIC ID.
+     * @return \One\Resource
+     */
+    public function vmDetachsg(int $a, int $b) {
+        return $this->makeCall('one.vm.detachsg', $a, $b);
+    }
+
+    /**
      * Changes the permission bits of a virtual machine.
      *
      * @param int $a The object ID.
@@ -429,14 +477,26 @@ class One extends OneBase {
     }
 
     /**
-     * Recovers a stuck VM that is waiting for a driver operation. The recovery may be done by failing or succeeding the pending operation. You need to manually check the vm status on the host, to decide if the operation was successful or not.
+     * Updates (appends) a set of supported configuration attributes in the VM template
      *
      * @param int $a The object ID.
      * @param string $b The new template contents. Syntax can be the usual attribute=value or XML.
+     * @param int $c Update type: 0: Replace the whole template. 1: Merge new template with the existing one.
      * @return \One\Resource
      */
-    public function vmUpdateconf(int $a, string $b) {
-        return $this->makeCall('one.vm.updateconf', $a, $b);
+    public function vmUpdateconf(int $a, string $b, int $c) {
+        return $this->makeCall('one.vm.updateconf', $a, $b, $c);
+    }
+
+    /**
+     * Recovers a stuck VM that is waiting for a driver operation. The recovery may be done by failing or succeeding the pending operation. You need to manually check the vm status on the host, to decide if the operation was successful or not.
+     *
+     * @param int $a The object ID.
+     * @param int $b Recover operation: success (1), failure (0), retry (2), delete (3), delete-recreate (4), delete-db (5)
+     * @return \One\Resource
+     */
+    public function vmRecover(int $a, int $b) {
+        return $this->makeCall('one.vm.recover', $a, $b);
     }
 
     /**
@@ -514,6 +574,18 @@ class One extends OneBase {
      */
     public function vmScheddelete(int $a, int $b) {
         return $this->makeCall('one.vm.scheddelete', $a, $b);
+    }
+
+    /**
+     * Creates a new backup image for the VM
+     *
+     * @param int $a The object ID.
+     * @param int $b The ID of the Datastore to store the backup.
+     * @param bool $c Reset flag, true to create a new incremental chain.
+     * @return \One\Resource
+     */
+    public function vmBackup(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vm.backup', $a, $b, $c);
     }
 
     /**
@@ -987,7 +1059,7 @@ class One extends OneBase {
     }
 
     /**
-     * Locks a Virtual Network. Lock certain actions depending on blocking level.
+     * Retrieves information for the virtual network.
      *
      * @param int $a The object ID.
      * @param bool $b optional flag to decrypt contained secrets, valid only for admin
@@ -998,6 +1070,18 @@ class One extends OneBase {
     }
 
     /**
+     * Locks a Virtual Network. Lock certain actions depending on blocking level.
+     *
+     * @param int $a The object ID.
+     * @param int $b Lock level: use (1), manage (2), admin (3), all (4)
+     * @param bool $c Test: check if the object is already locked to return an error
+     * @return \One\Resource
+     */
+    public function vnLock(int $a, int $b, bool $c) {
+        return $this->makeCall('one.vn.lock', $a, $b, $c);
+    }
+
+    /**
      * Unlocks a Virtual Network.
      *
      * @param int $a The object ID.
@@ -1005,6 +1089,17 @@ class One extends OneBase {
      */
     public function vnUnlock(int $a) {
         return $this->makeCall('one.vn.unlock', $a);
+    }
+
+    /**
+     * Recovers a stuck Virtual Network which is waiting for a driver operation. The recovery may be done by failing or succeeding the pending operation. You need to manually check the VN status, to decide if the operation was successful or not.
+     *
+     * @param int $a The object ID.
+     * @param int $b Recover operation: success (1), failure (0), delete (2), retry (3)
+     * @return \One\Resource
+     */
+    public function vnRecover(int $a, int $b) {
+        return $this->makeCall('one.vn.recover', $a, $b);
     }
 
     /**
@@ -1392,10 +1487,11 @@ class One extends OneBase {
      * Deletes the given image from the pool.
      *
      * @param int $a The object ID.
+     * @param bool $b Force flag, remove the Image even if the DS delete operation fails
      * @return \One\Resource
      */
-    public function imageDelete(int $a) {
-        return $this->makeCall('one.image.delete', $a);
+    public function imageDelete(int $a, bool $b) {
+        return $this->makeCall('one.image.delete', $a, $b);
     }
 
     /**
@@ -1549,6 +1645,18 @@ class One extends OneBase {
      */
     public function imageUnlock(int $a) {
         return $this->makeCall('one.image.unlock', $a);
+    }
+
+    /**
+     * Restores a VM backup
+     *
+     * @param int $a The object ID.
+     * @param int $b Datastore ID to store the disk images restored from the backup
+     * @param string $c Template (KEY=VALUE) with restore options: - NO_IP (YES/NO) to restore IP and MAC addresses - NO_NIC (YES/NO) to restore NIC attributes
+     * @return \One\Resource
+     */
+    public function imageRestore(int $a, int $b, string $c) {
+        return $this->makeCall('one.image.restore', $a, $b, $c);
     }
 
     /**
@@ -1822,7 +1930,7 @@ class One extends OneBase {
     }
 
     /**
-     * Attaches a new network interface to the virtual router and the virtual machines
+     * Instantiates a new virtual machine from a virtual router.
      *
      * @param int $a The object ID.
      * @param int $b Number of VMs to instantiate.
@@ -1834,6 +1942,17 @@ class One extends OneBase {
      */
     public function vrouterInstantiate(int $a, int $b, int $c, string $d, bool $e, string $f) {
         return $this->makeCall('one.vrouter.instantiate', $a, $b, $c, $d, $e, $f);
+    }
+
+    /**
+     * Attaches a new network interface to the virtual router and the virtual machines
+     *
+     * @param int $a The object ID.
+     * @param string $b A string containing a single NIC vector attribute. Syntax can be the usual attribute=value or XML.
+     * @return \One\Resource
+     */
+    public function vrouterAttachnic(int $a, string $b) {
+        return $this->makeCall('one.vrouter.attachnic', $a, $b);
     }
 
     /**
@@ -2704,7 +2823,7 @@ class One extends OneBase {
     }
 
     /**
-     * Replaces the vntemplate contents.
+     * Instantiates a new virtual network from a vntemplate.
      *
      * @param int $a The object ID.
      * @param string $b Name for the new Virtual Network. If it is an empty string, OpenNebula will assign one automatically.
@@ -2713,6 +2832,18 @@ class One extends OneBase {
      */
     public function vntemplateInstantiate(int $a, string $b, string $c) {
         return $this->makeCall('one.vntemplate.instantiate', $a, $b, $c);
+    }
+
+    /**
+     * Replaces the vntemplate contents.
+     *
+     * @param int $a The object ID.
+     * @param string $b The new vntemplate contents. Syntax can be the usual attribute=value or XML.
+     * @param int $c Update type: 0: replace the whole vntemplate. 1: Merge new vntemplate with the existing one.
+     * @return \One\Resource
+     */
+    public function vntemplateUpdate(int $a, string $b, int $c) {
+        return $this->makeCall('one.vntemplate.update', $a, $b, $c);
     }
 
     /**

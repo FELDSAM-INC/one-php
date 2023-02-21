@@ -44,9 +44,13 @@ The Error Code will contain one of the following values:
 | 0x8000 | LOCKED         | The resource is locked.                                               |
 +--------+----------------+-----------------------------------------------------------------------+
 
-.. note:: All methods expect a session string associated to the connected user as the first parameter. It has to be formed with the contents of the ONE\_AUTH file, which will be ``<username>:<password>`` with the default 'core' auth driver.
+.. note::
 
-.. note:: Each XML-RPC request has to be authenticated and authorized. See the :ref:`Auth Subsystem documentation <auth_overview>` for more information.
+    All methods expect a session string associated to the connected user as the first parameter. It has to be formed with the contents of the ONE\_AUTH file, which will be ``<username>:<password>`` with the default 'core' auth driver.
+
+.. note::
+
+    Each XML-RPC request has to be authenticated and authorized. See the :ref:`Auth Subsystem documentation <auth_overview>` for more information.
 
 The information strings returned by the ``one.*.info`` methods are XML-formatted. The complete XML Schemas (XSD) reference is included at the end of this page. We encourage you to use the ``-x`` option of the :ref:`command line interface <cli>` to collect sample outputs from your own infrastructure.
 
@@ -73,6 +77,10 @@ Authorization Requests Reference
 
 OpenNebula features a CLI that wraps the XML-RPC requests. For each XML-RPC request, the session token is authenticated, and after that the Request Manager generates an authorization request that can include more than one operation. The following tables document these requests from the different CLI commands.
 
+.. note::
+
+    Commands with marked with * are asynchronous. The success response for these commands means that all preconditions passed and the action started. To check the action result you need to inspect the resource or its state.
+
 .. _onevm_api:
 
 onevm
@@ -81,65 +89,71 @@ onevm
 +----------------------+---------------------------+-------------------+
 |    onevm command     |     XML-RPC Method        |   Auth. Request   |
 +======================+===========================+===================+
-| deploy               | one.vm.deploy             | VM:ADMIN          |
+| deploy*              | one.vm.deploy             | VM:ADMIN          |
 |                      |                           |                   |
 |                      |                           | HOST:MANAGE       |
 +----------------------+---------------------------+-------------------+
-| boot                 | one.vm.action             | VM:MANAGE         |
+| undeploy*            | one.vm.action             | VM:MANAGE         |
 |                      |                           |                   |
-| terminate            |                           |                   |
+| terminate*           |                           |                   |
 |                      |                           |                   |
-| suspend              |                           |                   |
+| suspend*             |                           |                   |
 |                      |                           |                   |
 | hold                 |                           |                   |
 |                      |                           |                   |
-| stop                 |                           |                   |
+| stop*                |                           |                   |
 |                      |                           |                   |
 | resume               |                           |                   |
 |                      |                           |                   |
 | release              |                           |                   |
 |                      |                           |                   |
-| poweroff             |                           |                   |
+| poweroff*            |                           |                   |
 |                      |                           |                   |
-| reboot               |                           |                   |
+| reboot*              |                           |                   |
 +----------------------+---------------------------+-------------------+
 | resched              | one.vm.action             | VM:ADMIN          |
 |                      |                           |                   |
 | unresched            |                           |                   |
 +----------------------+---------------------------+-------------------+
-| migrate              | one.vm.migrate            | VM:ADMIN          |
+| migrate*             | one.vm.migrate            | VM:ADMIN          |
 |                      |                           |                   |
 |                      |                           | HOST:MANAGE       |
 +----------------------+---------------------------+-------------------+
-| disk-saveas          | one.vm.disksaveas         | VM:MANAGE         |
+| disk-saveas*         | one.vm.disksaveas         | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | IMAGE:CREATE      |
 +----------------------+---------------------------+-------------------+
-| disk-snapshot-create | one.vm.disksnapshotcreate | VM:MANAGE         |
+| disk-snapshot-create*| one.vm.disksnapshotcreate | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | IMAGE:MANAGE      |
 +----------------------+---------------------------+-------------------+
-| disk-snapshot-delete | one.vm.disksnapshotdelete | VM:MANAGE         |
+| disk-snapshot-delete*| one.vm.disksnapshotdelete | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | IMAGE:MANAGE      |
 +----------------------+---------------------------+-------------------+
-| disk-snapshot-revert | one.vm.disksnapshotrevert | VM:MANAGE         |
+| disk-snapshot-revert*| one.vm.disksnapshotrevert | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
 | disk-snapshot-rename | one.vm.disksnapshotrename | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| disk-attach          | one.vm.attach             | VM:MANAGE         |
+| disk-attach*         | one.vm.attach             | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | IMAGE:USE         |
 +----------------------+---------------------------+-------------------+
-| disk-detach          | one.vm.detach             | VM:MANAGE         |
+| disk-detach*         | one.vm.detach             | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| disk-resize          | one.vm.diskresize         | VM:MANAGE         |
+| disk-resize*         | one.vm.diskresize         | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| nic-attach           | one.vm.attachnic          | VM:MANAGE         |
+| nic-attach*          | one.vm.attachnic          | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | NET:USE           |
 +----------------------+---------------------------+-------------------+
-| nic-detach           | one.vm.detachnic          | VM:MANAGE         |
+| nic-detach*          | one.vm.detachnic          | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
+| nic-update*          | one.vm.updatenic          | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
+| sg-attach*           | one.vm.attachsg           | VM:MANAGE         |
++----------------------+---------------------------+-------------------+
+| sg-detach*           | one.vm.detachsg           | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
 | create               | one.vm.allocate           | VM:CREATE         |
 |                      |                           |                   |
@@ -159,19 +173,19 @@ onevm
 +----------------------+---------------------------+-------------------+
 | rename               | one.vm.rename             | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| snapshot-create      | one.vm.snapshotcreate     | VM:MANAGE         |
+| snapshot-create*     | one.vm.snapshotcreate     | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| snapshot-delete      | one.vm.snapshotdelete     | VM:MANAGE         |
+| snapshot-delete*     | one.vm.snapshotdelete     | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| snapshot-revert      | one.vm.snapshotrevert     | VM:MANAGE         |
+| snapshot-revert*     | one.vm.snapshotrevert     | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| resize               | one.vm.resize             | VM:MANAGE         |
+| resize*              | one.vm.resize             | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
 | update               | one.vm.update             | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-| recover              | one.vm.recover            | VM:ADMIN          |
+| recover*             | one.vm.recover            | VM:ADMIN          |
 +----------------------+---------------------------+-------------------+
-| save                 | -- (ruby method)          | VM:MANAGE         |
+| save*                | -- (ruby method)          | VM:MANAGE         |
 |                      |                           |                   |
 |                      |                           | IMAGE:CREATE      |
 |                      |                           |                   |
@@ -196,14 +210,16 @@ onevm
 +----------------------+---------------------------+-------------------+
 | delete-chart         | one.vm.scheddelete        | VM:MANAGE         |
 +----------------------+---------------------------+-------------------+
-
-
+| backup \ :sup:`*`    | one.vm.backup             | VM:ADMIN          |
++----------------------+---------------------------+-------------------+
 
 .. note::
 
     The **deploy** action requires the user issuing the command to have VM:ADMIN rights. This user will usually be the scheduler with the oneadmin credentials.
 
     The scheduler deploys VMs to the Hosts over which the VM owner has MANAGE rights.
+
+    The **backup** action can be done by regular users through the schedule action interface (``--schedule``).
 
 onetemplate
 --------------------------------------------------------------------------------
@@ -276,7 +292,9 @@ onehost
 | top             |                   |                 |
 +-----------------+-------------------+-----------------+
 
-.. warning:: onehost sync is not performed by the core, it is done by the ruby command onehost.
+.. warning::
+
+    onehost sync is not performed by the core, it is done by the ruby command onehost.
 
 onecluster
 --------------------------------------------------------------------------------
@@ -453,7 +471,7 @@ onevnet
 |                 |                  |                    |
 |                 |                  | [CLUSTER:ADMIN]    |
 +-----------------+------------------+--------------------+
-| delete          | one.vn.delete    | NET:MANAGE         |
+| delete*         | one.vn.delete    | NET:MANAGE         |
 +-----------------+------------------+--------------------+
 | show            | one.vn.info      | NET:USE            |
 +-----------------+------------------+--------------------+
@@ -472,6 +490,8 @@ onevnet
 | lock            | one.vn.lock      | NET:MANAGE         |
 +-----------------+------------------+--------------------+
 | unlock          | one.vn.unlock    | NET:MANAGE         |
++-----------------+------------------+--------------------+
+| recover         | one.vn.recover   | NET:MANAGE         |
 +-----------------+------------------+--------------------+
 
 oneuser
@@ -570,11 +590,11 @@ oneimage
 +------------------+---------------------------+------------------------+
 | chtype           | one.image.chtype          | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
-| snapshot-delete  | one.image.snapshotdelete  | IMAGE:MANAGE           |
+| snapshot-delete* | one.image.snapshotdelete  | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
-| snapshot-revert  | one.image.snapshotrevert  | IMAGE:MANAGE           |
+| snapshot-revert* | one.image.snapshotrevert  | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
-| snapshot-flatten | one.image.snapshotflatten | IMAGE:MANAGE           |
+| snapshot-flatten*| one.image.snapshotflatten | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
 | update           | one.image.update          | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
@@ -582,13 +602,13 @@ oneimage
 |                  |                           |                        |
 |                  |                           | DATASTORE:USE          |
 +------------------+---------------------------+------------------------+
-| clone            | one.image.clone           | IMAGE:CREATE           |
+| clone*           | one.image.clone           | IMAGE:CREATE           |
 |                  |                           |                        |
 |                  |                           | IMAGE:USE              |
 |                  |                           |                        |
 |                  |                           | DATASTORE:USE          |
 +------------------+---------------------------+------------------------+
-| delete           | one.image.delete          | IMAGE:MANAGE           |
+| delete*          | one.image.delete          | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
 | show             | one.image.info            | IMAGE:USE              |
 +------------------+---------------------------+------------------------+
@@ -609,6 +629,8 @@ oneimage
 | lock             | one.image.lock            | IMAGE:MANAGE           |
 +------------------+---------------------------+------------------------+
 | unlock           | one.image.unlock          | IMAGE:MANAGE           |
++------------------+---------------------------+------------------------+
+| restore          | one.image.restore         | IMAGE:USE              |
 +------------------+---------------------------+------------------------+
 
 
@@ -653,7 +675,7 @@ onemarketapp
 |                      |                        |                                 |
 |                      |                        | MARKETPLACE:USE                 |
 +----------------------+------------------------+---------------------------------+
-| export               | -- (ruby method)       | MARKETPLACEAPP:USE              |
+| export*              | -- (ruby method)       | MARKETPLACEAPP:USE              |
 |                      |                        |                                 |
 |                      |                        | IMAGE:CREATE                    |
 |                      |                        |                                 |
@@ -661,7 +683,7 @@ onemarketapp
 |                      |                        |                                 |
 |                      |                        | [TEMPLATE:CREATE]               |
 +----------------------+------------------------+---------------------------------+
-| download             | -- (ruby method)       | MARKETPLACEAPP:USE              |
+| download*            | -- (ruby method)       | MARKETPLACEAPP:USE              |
 +----------------------+------------------------+---------------------------------+
 | enable               | one.marketapp.enable   | MARKETPLACEAPP:MANAGE           |
 |                      |                        |                                 |
@@ -1085,7 +1107,10 @@ Sample template string:
 
     MEMORY=4096\nCPU=4\nVCPU=4
 
-.. note:: Declaring a field overwrites the template. Thus, declaring ``DISK=[...]`` overwrites the template ``DISK`` attribute and as such, must contain the entire ``DISK`` definition.
+.. note::
+
+    Declaring a field overwrites the template. Thus, declaring ``DISK=[...]`` overwrites the template ``DISK`` attribute and as such, must contain the entire ``DISK`` definition.
+
 
 one.template.update
 --------------------------------------------------------------------------------
@@ -1702,6 +1727,84 @@ one.vm.detachnic
 | OUT  | Int        | Error code.                                 |
 +------+------------+---------------------------------------------+
 
+.. _api_onevm_updatenic:
+
+one.vm.updatenic
+--------------------------------------------------------------------------------
+
+-  **Description**: Updates (appends) a NIC attributes
+-  **Parameters**
+
++------+------------+--------------------------------------------------------------------------------------------------------+
+| Type | Data Type  |                                              Description                                               |
++======+============+========================================================================================================+
+| IN   | String     | The session string.                                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                                                         |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The nic ID.                                                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | String     | A string containing updated attributes for the NIC.                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | Update type: **0**: Replace the whole NIC. **1**: Merge new NIC with the existing one.                 |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                                                          |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+
+one.vm.attachsg
+--------------------------------------------------------------------------------
+
+-  **Description**: Attaches a security group to a network interface of a VM, if the VM is running it updates the associated rules.
+-  **Parameters**
+
++------+------------+--------------------------------------------------------------------------------------------------------+
+| Type | Data Type  |                                              Description                                               |
++======+============+========================================================================================================+
+| IN   | String     | The session string.                                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The Virtual Machine ID.                                                                                |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The NIC ID                                                                                             |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The Security Group ID, which should be added to the NIC                                                |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                                                          |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine that caused the error.                                                       |
++------+------------+--------------------------------------------------------------------------------------------------------+
+
+one.vm.detachsg
+--------------------------------------------------------------------------------
+
+-  **Description**: Detaches a security group from a network interface of a VM, if the VM is running it removes the associated rules.
+-  **Parameters**
+
++------+------------+--------------------------------------------------+
+| Type | Data Type  |                 Description                      |
++======+============+==================================================+
+| IN   | String     | The session string.                              |
++------+------------+--------------------------------------------------+
+| IN   | Int        | The object ID.                                   |
++------+------------+--------------------------------------------------+
+| IN   | Int        | The NIC ID.                                      |
++------+------------+--------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not      |
++------+------------+--------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                    |
++------+------------+--------------------------------------------------+
+| OUT  | Int        | Error code.                                      |
++------+------------+--------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine that caused the error. |
++------+------------+--------------------------------------------------+
+
 one.vm.chmod
 --------------------------------------------------------------------------------
 
@@ -1908,6 +2011,8 @@ one.vm.update
 | OUT  | Int        | Error code.                                                                                      |
 +------+------------+--------------------------------------------------------------------------------------------------+
 
+.. _api_onevmmupdateconf:
+
 one.vm.updateconf
 --------------------------------------------------------------------------------
 
@@ -1922,6 +2027,8 @@ one.vm.updateconf
 | IN   | Int        | The object ID.                                                                                   |
 +------+------------+--------------------------------------------------------------------------------------------------+
 | IN   | String     | The new template contents. Syntax can be the usual ``attribute=value`` or XML.                   |
++------+------------+--------------------------------------------------------------------------------------------------+
+| IN   | Int        | Update type: **0**: Replace the whole template. **1**: Merge new template with the existing one. |
 +------+------------+--------------------------------------------------------------------------------------------------+
 | OUT  | Boolean    | true or false whenever is successful or not                                                      |
 +------+------------+--------------------------------------------------------------------------------------------------+
@@ -1951,7 +2058,9 @@ The supported attributes are:
 | ``CONTEXT``  | Any value. **Variable substitution will be made**                       |
 +--------------+-------------------------------------------------------------------------+
 
-.. note:: Visit the :ref:`Virtual Machine Template reference <template>` for a complete description of each attribute
+.. note::
+
+    Visit the :ref:`Virtual Machine Template reference <template>` for a complete description of each attribute
 
 one.vm.recover
 --------------------------------------------------------------------------------
@@ -1959,23 +2068,23 @@ one.vm.recover
 -  **Description**: Recovers a stuck VM that is waiting for a driver operation. The recovery may be done by failing or succeeding the pending operation. You need to manually check the vm status on the host, to decide if the operation was successful or not.
 -  **Parameters**
 
-+------+------------+-----------------------------------------------------------------------------------------+
-| Type | Data Type  |                                       Description                                       |
-+======+============+=========================================================================================+
-| IN   | String     | The session string.                                                                     |
-+------+------------+-----------------------------------------------------------------------------------------+
-| IN   | Int        | The object ID.                                                                          |
-+------+------------+-----------------------------------------------------------------------------------------+
-| IN   | Int        | Recover operation: success (1), failure (0), retry (2), delete (3), delete-recreate (4) |
-+------+------------+-----------------------------------------------------------------------------------------+
-| OUT  | Boolean    | true or false whenever is successful or not                                             |
-+------+------------+-----------------------------------------------------------------------------------------+
-| OUT  | Int/String | The resource ID / The error string.                                                     |
-+------+------------+-----------------------------------------------------------------------------------------+
-| OUT  | Int        | Error code.                                                                             |
-+------+------------+-----------------------------------------------------------------------------------------+
-| OUT  | Int        | ID of the Virtual Machine that caused the error.                                        |
-+------+------------+-----------------------------------------------------------------------------------------+
++------+------------+--------------------------------------------------------------------------------------------------------+
+| Type | Data Type  |                                       Description                                                      |
++======+============+========================================================================================================+
+| IN   | String     | The session string.                                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                                                         |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | Recover operation: success (1), failure (0), retry (2), delete (3), delete-recreate (4), delete-db (5) |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int/String | The resource ID / The error string.                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine that caused the error.                                                       |
++------+------------+--------------------------------------------------------------------------------------------------------+
 
 one.vm.info
 --------------------------------------------------------------------------------
@@ -2171,8 +2280,38 @@ one.vm.scheddelete
 | OUT  | Int        | ID of the Virtual Machine object that caused the error               |
 +------+------------+----------------------------------------------------------------------+
 
+one.vm.backup
+--------------------------------------------------------------------------------
+
+-  **Description**: Creates a new backup image for the VM
+-  **Parameters**
+
++------+------------+----------------------------------------------------------------------+
+| Type | Data Type  |                                 Description                          |
++======+============+======================================================================+
+| IN   | String     | The session string.                                                  |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                       |
++------+------------+----------------------------------------------------------------------+
+| IN   | Int        | The ID of the Datastore to store the backup.                         |
++------+------------+----------------------------------------------------------------------+
+| IN   | Boolean    | Reset flag, true to create a new incremental chain.                  |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int/String | The VM ID / The error string.                                        |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                          |
++------+------------+----------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Machine object that caused the error               |
++------+------------+----------------------------------------------------------------------+
+
 one.vmpool.info
 --------------------------------------------------------------------------------
+
+.. note::
+
+    Some attributes e.g. `TEMPLATE`, `USER_TEMPLATE` are limited in this call, see also `one.vmpool.infoextended`
 
 -  **Description**: Retrieves information for all or part of the VMs in the pool.
 -  **Parameters**
@@ -3495,7 +3634,9 @@ one.vn.info
 | OUT  | Int       | ID of the object that caused the error.                          |
 +------+-----------+------------------------------------------------------------------+
 
-.. note:: The ACL rules do not apply to VNET reserveations in the same way as they do to normal VNETs and other objects. Read more in the :ref:`ACL documentation guide <manage_acl_vnet_reservations>`.
+.. note::
+
+    The ACL rules do not apply to VNET reserveations in the same way as they do to normal VNETs and other objects. Read more in the :ref:`ACL documentation guide <manage_acl_vnet_reservations>`.
 
 one.vn.lock
 --------------------------------------------------------------------------------
@@ -3552,6 +3693,32 @@ one.vn.unlock
 | OUT  | Int       | ID of the Object that caused the error.                                                                |
 +------+-----------+--------------------------------------------------------------------------------------------------------+
 
+.. _api_vn_recover:
+
+one.vn.recover
+--------------------------------------------------------------------------------
+
+-  **Description**: Recovers a stuck Virtual Network which is waiting for a driver operation. The recovery may be done by failing or succeeding the pending operation. You need to manually check the VN status, to decide if the operation was successful or not.
+-  **Parameters**
+
++------+------------+--------------------------------------------------------------------------------------------------------+
+| Type | Data Type  |                                       Description                                                      |
++======+============+========================================================================================================+
+| IN   | String     | The session string.                                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                                                         |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int        | Recover operation: success (1), failure (0), delete (2), retry (3)                                     |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int/String | The resource ID / The error string.                                                                    |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                                                            |
++------+------------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int        | ID of the Virtual Network that caused the error.                                                       |
++------+------------+--------------------------------------------------------------------------------------------------------+
+
 one.vnpool.info
 --------------------------------------------------------------------------------
 
@@ -3588,7 +3755,9 @@ one.vnpool.info
 
 The range can be used to retrieve a subset of the pool, from the 'start' to the 'end' ID. To retrieve the complete pool, use ``(-1, -1)``; to retrieve all the pool from a specific ID to the last one, use ``(<id>, -1)``, and to retrieve the first elements up to an ID, use ``(0, <id>)``.
 
-.. note:: The ACL rules do not apply to VNET reserveations in the same way as they do to normal VNETs and other objects. Read more in the :ref:`ACL documentation guide <manage_acl_vnet_reservations>`.
+.. note::
+
+    The ACL rules do not apply to VNET reserveations in the same way as they do to normal VNETs and other objects. Read more in the :ref:`ACL documentation guide <manage_acl_vnet_reservations>`.
 
 Actions for Security Group Management
 ================================================================================
@@ -4431,21 +4600,23 @@ one.image.delete
 -  **Description**: Deletes the given image from the pool.
 -  **Parameters**
 
-+------+------------+---------------------------------------------+
-| Type | Data Type  |                 Description                 |
-+======+============+=============================================+
-| IN   | String     | The session string.                         |
-+------+------------+---------------------------------------------+
-| IN   | Int        | The object ID.                              |
-+------+------------+---------------------------------------------+
-| OUT  | Boolean    | true or false whenever is successful or not |
-+------+------------+---------------------------------------------+
-| OUT  | Int/String | The resource ID / The error string.         |
-+------+------------+---------------------------------------------+
-| OUT  | Int        | Error code.                                 |
-+------+------------+---------------------------------------------+
-| OUT  | Int        | ID of the object that caused the error.     |
-+------+------------+---------------------------------------------+
++------+------------+--------------------------------------------------------------------+
+| Type | Data Type  |                 Description                                        |
++======+============+====================================================================+
+| IN   | String     | The session string.                                                |
++------+------------+--------------------------------------------------------------------+
+| IN   | Int        | The object ID.                                                     |
++------+------------+--------------------------------------------------------------------+
+| IN   | Boolean    | Force flag, remove the Image even if the DS delete operation fails |
++------+------------+--------------------------------------------------------------------+
+| OUT  | Boolean    | true or false whenever is successful or not                        |
++------+------------+--------------------------------------------------------------------+
+| OUT  | Int/String | The resource ID / The error string.                                |
++------+------------+--------------------------------------------------------------------+
+| OUT  | Int        | Error code.                                                        |
++------+------------+--------------------------------------------------------------------+
+| OUT  | Int        | ID of the object that caused the error.                            |
++------+------------+--------------------------------------------------------------------+
 
 one.image.enable
 --------------------------------------------------------------------------------
@@ -4770,6 +4941,34 @@ one.image.unlock
 | OUT  | Boolean   | true or false whenever is successful or not                                                            |
 +------+-----------+--------------------------------------------------------------------------------------------------------+
 | OUT  | Int       | The ID of the resource.                                                                                |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int       | Error code.                                                                                            |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Int       | ID of the object that caused the error.                                                                |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+
+one.image.restore
+--------------------------------------------------------------------------------
+
+-  **Description**: Restores a VM backup
+-  **Parameters**
+
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| Type | Data Type |                                              Description                                               |
++======+===========+========================================================================================================+
+| IN   | String    | The session string.                                                                                    |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int       | The object ID.                                                                                         |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| IN   | Int       | Datastore ID to store the disk images restored from the backup                                         |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| IN   | String    | Template (KEY=VALUE) with restore options:                                                             |
+|      |           |   - NO_IP (YES/NO) to restore IP and MAC addresses                                                     |
+|      |           |   - NO_NIC (YES/NO) to restore NIC attributes                                                          |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| OUT  | Boolean   | true or false whenever is successful or not                                                            |
++------+-----------+--------------------------------------------------------------------------------------------------------+
+| OUT  | String    | Blank separated list of restored objects IDs. The first one is the VM Template ID.                     |
 +------+-----------+--------------------------------------------------------------------------------------------------------+
 | OUT  | Int       | Error code.                                                                                            |
 +------+-----------+--------------------------------------------------------------------------------------------------------+
@@ -5434,7 +5633,9 @@ Sample template string:
 
     MEMORY=4096\nCPU=4\nVCPU=4
 
-.. note:: Declaring a field overwrites the template. Thus, declaring ``DISK=[...]`` overwrites the template ``DISK`` attribute and as such, must contain the entire ``DISK`` definition.
+.. note::
+
+    Declaring a field overwrites the template. Thus, declaring ``DISK=[...]`` overwrites the template ``DISK`` attribute and as such, must contain the entire ``DISK`` definition.
 
 one.vrouter.attachnic
 --------------------------------------------------------------------------------
@@ -7360,7 +7561,9 @@ Sample vntemplate string:
 
     VN_MAD=bridge\nVLAN_ID=4
 
-.. note:: Declaring a field overwrites the vntemplate. Thus, declaring ``VN_MAD=[...]`` overwrites the vntemplate ``VN_MAD`` attribute.
+.. note::
+
+    Declaring a field overwrites the vntemplate. Thus, declaring ``VN_MAD=[...]`` overwrites the vntemplate ``VN_MAD`` attribute.
 
 one.vntemplate.update
 --------------------------------------------------------------------------------
